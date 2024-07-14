@@ -1,48 +1,40 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Footer from "./components/Footer";
+import SearchBar from "./components/SearchBar";
 
-class App extends Component {
- 
+const App = () => {
+  const handleSearch = (query) => {
+    console.log("Searching for:", query);
+    // Perform search or API call here
+  };
 
-  constructor(props) {
-    super(props);
-    this.state = { apiResponse: "" };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { apiResponse: "" };
+  // }
 
-  callAPI() {
-    fetch("http://localhost:9000/testAPI")
-      .then(res => res.text())
-      .then(res => this.setState({ apiResponse: res }));
-  }
+  // callAPI() {
+  //   fetch("http://localhost:9000/testAPI")
+  //     .then(res => res.text())
+  //     .then(res => this.setState({ apiResponse: res }));
+  // }
 
-  componentDidMount() {
-    this.callAPI();
-  }
+  // componentDidMount() {
+  //   this.callAPI();
+  // }
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p className="App">
-            {this.state.apiResponse}
-          </p>
-          <p>test</p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
- //client commit test
-  
-  console.log(8-9);
+  // render() {
+  return (
+    <div>
+      <header>
+        <p>{/* {this.state.apiResponse} */}</p>
+        <SearchBar onSearch={handleSearch} />
+        <Footer />
+      </header>
+    </div>
+  );
+};
+// }
+
+
 export default App;
