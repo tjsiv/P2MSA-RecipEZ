@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Footer from './components/Footer';
-import SearchBar from "./components/SearchBar"
+import SearchBar from './components/SearchBar';
 
 const App = () => {
   const handleSearch = (query) => {
     console.log('Searching for:', query);
-    // can API call here
+    // Perform search or API call here
   };
 
   // constructor(props) {
@@ -30,7 +30,7 @@ const App = () => {
           <p>
             {/* {this.state.apiResponse} */}
           </p>
-          <SearchBar onSearch={handleSearch}/>
+          <SearchBar />
           <Footer />
         </header>
       </div>
