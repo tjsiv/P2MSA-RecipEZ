@@ -45,6 +45,4 @@ class App extends Component {
  //client commit test
   
   console.log(8-9);
-  console.log(018-015);
-  console.log("hello world")
 export default App;
