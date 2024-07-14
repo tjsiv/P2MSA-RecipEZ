@@ -15,8 +15,8 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-//cors call
-app.use(cors());
+//middleware
+app.use(cors());//needed to connect front to backend
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
