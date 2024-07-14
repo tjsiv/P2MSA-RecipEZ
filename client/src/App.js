@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import Footer from './components/Footer';
+import SearchBar from "./components/SearchBar"
 
-class App extends Component {
- 
+const App = () => {
+  const handleSearch = (query) => {
+    console.log('Searching for:', query);
+    // can API call here
+  };
 
   // constructor(props) {
   //   super(props);
@@ -19,18 +23,19 @@ class App extends Component {
   //   this.callAPI();
   // }
 
-  render() {
+  // render() {
     return (
       <div>
         <header>
           <p>
             {/* {this.state.apiResponse} */}
           </p>
+          <SearchBar onSearch={handleSearch}/>
           <Footer />
         </header>
       </div>
     );
   }
-}
+// }
   
 export default App;
