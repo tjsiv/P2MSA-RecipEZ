@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import Footer from './components/Footer';
-import SearchBar from './components/SearchBar';
+import React, { Component } from "react";
+import Footer from "./components/Footer";
+import SearchBar from "./components/SearchBar";
 
 const App = () => {
   const handleSearch = (query) => {
-    console.log('Searching for:', query);
+    console.log("Searching for:", query);
     // Perform search or API call here
   };
 
@@ -24,18 +24,16 @@ const App = () => {
   // }
 
   // render() {
-    return (
-      <div>
-        <header>
-          <p>
-            {/* {this.state.apiResponse} */}
-          </p>
-          <SearchBar />
-          <Footer />
-        </header>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <header>
+        <p>{/* {this.state.apiResponse} */}</p>
+        <SearchBar onSearch={handleSearch} />
+        <Footer />
+      </header>
+    </div>
+  );
+};
 // }
-  
+
 export default App;
