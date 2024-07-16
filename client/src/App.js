@@ -26,7 +26,7 @@ const App = () => {
   // }
 
   // render() {
-  return (
+  return ( 
     <div>
       <header>
         <p>{/* {this.state.apiResponse} */}</p>
@@ -36,7 +36,7 @@ const App = () => {
       </header>
     </div>
   );
-};
+}; 
 // }
 
 
