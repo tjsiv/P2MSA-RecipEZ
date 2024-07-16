@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import RecipeCard from "./RecipeCard";
 
 const SearchBar = () => {
@@ -7,18 +7,21 @@ const SearchBar = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Handle input change
   const handleInputChange = (event) => {
     setQuery(event.target.value);
   };
 
-  // Handle search
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   const handleSearch = () => {
     setLoading(true);
     setError("");
     setResults([]);
 
-// API
     fetch(`http://localhost:9000/search?q=${query}`)
       .then((response) => response.json())
       .then((data) => {
@@ -38,6 +41,7 @@ const SearchBar = () => {
           type="text"
           value={query}
           onChange={handleInputChange}
+          onKeyPress={handleKeyPress} // Add event listener here
           placeholder="Search..."
           style={styles.input}
         />
@@ -49,15 +53,15 @@ const SearchBar = () => {
       {error && <div style={styles.error}>{error}</div>}
       <div style={styles.resultsContainer}>
         {results.length > 0 ? (
-          <RecipeCard  results={results}/>
+          <RecipeCard results={results} />
         ) : (
-          !loading && query && <div style={styles.noResults}>No results found</div>
+          !loading &&
+          query && <div style={styles.noResults}>No results found</div>
         )}
       </div>
     </div>
   );
 };
-
 
 // Styling
 const styles = {
@@ -77,7 +81,7 @@ const styles = {
     border: "1px solid #ccc",
     borderRadius: "4px",
     marginRight: "8px",
-    color: "black"
+    color: "black",
   },
   button: {
     padding: "8px 16px",
