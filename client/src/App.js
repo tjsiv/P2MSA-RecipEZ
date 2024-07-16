@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   const handleSearch = (query) => {
@@ -28,6 +29,7 @@ const App = () => {
     <div>
       <header>
         <p>{/* {this.state.apiResponse} */}</p>
+        <Navbar />
         <SearchBar onSearch={handleSearch} />
         <Footer />
       </header>
