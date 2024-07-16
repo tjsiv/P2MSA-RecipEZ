@@ -8,26 +8,52 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post("/recipes", async(req, res) => {
-  try{
-    // insert a new recipe into the database as a test for connection with postman
-    const { title, description} = req.body;
-    const newRecipe = await pool.query("INSERT INTO recipe (title, description) VALUES($1, $2) RETURNING *", 
-      [title, description]);
+//favorite a recipe from button
+router.post("/favorites", async (req, res) => {
+  try {
+    const {
+      title,
+      description,
+      category_id,
+      instructions,
+      pictures,
+      yt_link,
+      ingredients,
+      measurements,
+      userId
+    } = req.body;
 
-      //only return relevant results of query
-      res.json(newRecipe.rows[0]);
-  } catch(err){
-    console.error(err);
-    res.status(500).send("Server Error"); 
+    // Insert new recipe into recipes table
+    const newRecipe = await pool.query(
+      "INSERT INTO recipes (title, description, category_id, instructions, pictures, yt_link, ingredients, measurements) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+      [title, description, category_id, instructions, pictures, yt_link, ingredients, measurements]
+    );
+
+    const recipeId = newRecipe.rows[0].recipe_id;
+
+    // Insert into favorites table for the user
+    const newFavorite = await pool.query(
+      "INSERT INTO favorites (user_id, recipe_id) VALUES ($1, $2) RETURNING *",
+      [userId, recipeId]
+    );
+
+    // Return the new recipe and favorite details
+    res.json({
+      recipe: newRecipe.rows[0],
+      favorite: newFavorite.rows[0]
+    });
+  } catch (err) {
+    console.error("Error adding recipe to favorites:", err);
+    res.status(500).json({ error: "Server Error" });
   }
-})
+});
+
 
 //pull all recipes from a sql table
 router.get("/recipes", async(req, res) => {
   try{
     // get all recipes from the database
-    const allRecipes = await pool.query("SELECT * FROM recipe");
+    const allRecipes = await pool.query("SELECT * FROM recipes");
 
     // only return relevant results of query
     res.json(allRecipes.rows);
@@ -53,23 +79,23 @@ router.get("/recipes/:id", async(req, res) => {
 })
 
 //update a recipe by id
-router.put("/recipes/:id", async(req, res) => {
-  try{
-    // update a recipe by id in the database
+router.put("/recipes/:id", async (req, res) => {
+  try {
     const { id } = req.params;
-    const { title, description } = req.body;
+    const { name, category_id, instructions, pictures, yt_link, ingredients, measurements } = req.body;
+
     const updatedRecipe = await pool.query(
-      "UPDATE recipe SET title=$1, description=$2 WHERE recipe_id=$3 RETURNING *", 
-      [title, description, id]
+      "UPDATE recipes SET name=$1, category_id=$2, instructions=$3, pictures=$4, yt_link=$5, ingredients=$6, measurements=$7, updated_at=NOW() WHERE recipe_id=$8 RETURNING *",
+      [name, category_id, instructions, pictures, yt_link, ingredients, measurements, id]
     );
 
-    // only return relevant results of query
     res.json(updatedRecipe.rows[0]);
-  } catch(err){
+  } catch (err) {
     console.error(err);
-    res.status(500).send("Server Error"); 
+    res.status(500).send("Server Error");
   }
-})
+});
+
 
 //delete a recipe by id
 router.delete("/recipes/:id", async(req, res) => {

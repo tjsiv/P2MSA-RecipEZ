@@ -14,10 +14,10 @@ appCall.get("/", async (req, res) => {
     // Determine if the query is a name or a first letter
     if (query.length === 1) {
       // Search by first letter
-      apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?f=${query}`;
+      apiUrl = `https://www.themealdb.com/api/json/v2/${process.env.API_KEY}/search.php?f=${query}`;
     } else {
       // Search by name
-      apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`;
+      apiUrl = `https://www.themealdb.com/api/json/v2/${process.env.API_KEY}/search.php?s=${query}`;
     }
 
     // Fetch data from the API
