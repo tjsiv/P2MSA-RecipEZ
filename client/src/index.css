@@ -2,8 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap');
+
 *{
   color: white;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Architects Daughter', cursive;
+}
+
+p, ul, li{
+  font-family: 'Playwright', sans-serif;
 }
 
 body {
