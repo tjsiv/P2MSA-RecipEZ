@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -18,10 +18,10 @@ const SearchBar = () => {
     setResults([]);
 
 // API
-    fetch(`https://api.example.com/search?q=${query}`)
+    fetch(`http://localhost:9000/search?q=${query}`)
       .then((response) => response.json())
       .then((data) => {
-        setResults(data.results); // Adjust according to API response
+        setResults(data); // Adjust according to API response
         setLoading(false);
       })
       .catch((err) => {
