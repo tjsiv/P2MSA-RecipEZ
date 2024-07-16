@@ -1,10 +1,10 @@
 var express = require('express');
 var appCall = express.Router();
-var pool = require('../db');
+
 
 const axios = require('axios');
 
-appCall.get("/search", async (req, res) => {
+appCall.get("/", async (req, res) => {
   try {
     // Extract the query parameter from the request
     const query = req.query.q;
@@ -30,3 +30,5 @@ appCall.get("/search", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
+module.exports = appCall;
