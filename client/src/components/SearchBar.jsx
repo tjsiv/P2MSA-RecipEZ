@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import RecipeCard from "./RecipeCard";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -48,11 +49,7 @@ const SearchBar = () => {
       {error && <div style={styles.error}>{error}</div>}
       <div style={styles.resultsContainer}>
         {results.length > 0 ? (
-          results.map((result, index) => (
-            <div key={index} style={styles.resultItem}>
-              {result.name} {/* Adjust according to API response */}
-            </div>
-          ))
+          <RecipeCard  results={results}/>
         ) : (
           !loading && query && <div style={styles.noResults}>No results found</div>
         )}

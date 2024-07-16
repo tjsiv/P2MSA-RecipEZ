@@ -33,7 +33,6 @@ const App = () => {
         <p>{/* {this.state.apiResponse} */}</p>
         <Navbar />
         <SearchBar onSearch={handleSearch} />
-        <RecipeCard />
         <Footer />
       </header>
     </div>
