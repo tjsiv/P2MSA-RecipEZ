@@ -9,7 +9,7 @@ const RecipeCard = ({ results }) => {
           <h2 class="text-2xl font-bold tracking-tight">Recipes:</h2>
           <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {results.map((result, index) => (
-              <div class="group relative">
+              <div key={index} class="group relative">
                 <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                   {/* Image */}
                   <img
@@ -37,7 +37,7 @@ const RecipeCard = ({ results }) => {
                     </p>
                   </div>
                   {/* Price */}
-                  <p class="text-xl font-medium text-blue-200">$35</p>
+                  <p class="text-xl font-medium text-blue-200">${Math.floor(Math.random() * (30 - 10 +1) + 10)}</p>
                 </div>
               </div>
           ))}
