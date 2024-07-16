@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
+import RecipeCard from "./components/RecipeCard";
 
 const App = () => {
   const handleSearch = (query) => {
@@ -31,6 +32,7 @@ const App = () => {
         <p>{/* {this.state.apiResponse} */}</p>
         <Navbar />
         <SearchBar onSearch={handleSearch} />
+        <RecipeCard />
         <Footer />
       </header>
     </div>
