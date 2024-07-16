@@ -21,8 +21,8 @@ const RecipeCard = ({ results }) => {
                 {/* Text Container */}
                 <div className="mt-4 flex justify-between md:text-left">
                   <div>
-                    <h3 className="text-2xl">
-                      <a href="#" className="ml-4">
+                    <h3 className="text-2xl pl-4">
+                      <a href="#">
                         <span
                           aria-hidden="true"
                           class="absolute inset-0 bg-gray-600 opacity-10 z-[-1] rounded-md"
