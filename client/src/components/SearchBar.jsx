@@ -80,6 +80,7 @@ const styles = {
     border: "1px solid #ccc",
     borderRadius: "4px",
     marginRight: "8px",
+    color: "black"
   },
   button: {
     padding: "8px 16px",
