@@ -6,6 +6,7 @@ const App = () => {
   const handleSearch = (query) => {
     console.log("Searching for:", query);
     // Perform search or API call here
+    // www.themealdb.com/api/json/v1/1/search.php?s=
   };
 
   // constructor(props) {

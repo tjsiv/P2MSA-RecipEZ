@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // SearchBar set to empty 
 const SearchBar = ({ onSearch }) => {
