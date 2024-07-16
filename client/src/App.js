@@ -10,7 +10,27 @@ const App = () => {
     // Perform search or API call here
     // www.themealdb.com/api/json/v1/1/search.php?s=
   };
+//***************************************************************************************************************************************************************** */
+  // const [user, setUser] = useState(null); // State to hold logged-in user data
 
+  // const handleLoginSuccess = (userData) => {
+  //   setUser(userData); // Set logged-in user data 
+  // };
+
+  // const handleLogout = () => {
+  //   setUser(null); // Clear logged-in user data (logout functionality)                                               this is for  login checking
+  // };
+  //
+  // return(
+  // <div>
+  //     {!user ? (
+  //       <LoginForm onLoginSuccess={handleLoginSuccess} />
+  //     ) : (
+  //       <UserProfile user={user} onLogout={handleLogout} />
+  //     )}
+  //   </div>
+  // );
+//*************************************************************************************************************************************************************** */
   // constructor(props) {
   //   super(props);
   //   this.state = { apiResponse: "" };
@@ -30,6 +50,7 @@ const App = () => {
   return ( 
     <div>
       <header>
+        
         <p>{/* {this.state.apiResponse} */}</p>
         <Navbar />
         <SearchBar onSearch={handleSearch} />
