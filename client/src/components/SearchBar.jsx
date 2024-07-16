@@ -61,6 +61,7 @@ const SearchBar = () => {
   );
 };
 
+
 // Styling
 const styles = {
   container: {
@@ -85,7 +86,7 @@ const styles = {
     fontSize: "16px",
     border: "none",
     borderRadius: "4px",
-    backgroundColor: "#007bff",
+    backgroundColor: "rgb(192, 132, 252)",
     color: "white",
     cursor: "pointer",
   },
