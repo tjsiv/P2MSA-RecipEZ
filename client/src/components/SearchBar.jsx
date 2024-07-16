@@ -1,17 +1,32 @@
 import React, { useState } from "react";
 
-// SearchBar set to empty 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = () => {
   const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-//   Input change to the select target value
+  // Handle input change
   const handleInputChange = (event) => {
     setQuery(event.target.value);
   };
 
-//   Query fires on search
+  // Handle search
   const handleSearch = () => {
-    onSearch(query);
+    setLoading(true);
+    setError("");
+    setResults([]);
+
+    fetch(`https://api.example.com/search?q=${query}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setResults(data.results);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError("Failed to fetch results");
+        setLoading(false);
+      });
   };
 
   return (
@@ -26,6 +41,19 @@ const SearchBar = ({ onSearch }) => {
       <button onClick={handleSearch} style={styles.button}>
         Search
       </button>
+      {loading && <div style={styles.loading}>Loading...</div>}
+      {error && <div style={styles.error}>{error}</div>}
+      <div style={styles.resultsContainer}>
+        {results.length > 0 ? (
+          results.map((result, index) => (
+            <div key={index} style={styles.resultItem}>
+              {result.name} {/* Adjust according to API response */}
+            </div>
+          ))
+        ) : (
+          !loading && query && <div style={styles.noResults}>No results found</div>
+        )}
+      </div>
     </div>
   );
 };
@@ -34,6 +62,7 @@ const SearchBar = ({ onSearch }) => {
 const styles = {
   container: {
     display: "flex",
+    flexDirection: "column",
     alignItems: "center",
   },
   input: {
@@ -41,7 +70,7 @@ const styles = {
     fontSize: "16px",
     border: "1px solid #ccc",
     borderRadius: "4px",
-    marginRight: "8px",
+    marginBottom: "8px",
   },
   button: {
     padding: "8px 16px",
@@ -51,6 +80,27 @@ const styles = {
     backgroundColor: "#007bff",
     color: "white",
     cursor: "pointer",
+  },
+  resultsContainer: {
+    marginTop: "16px",
+    width: "100%",
+    textAlign: "center",
+  },
+  resultItem: {
+    padding: "8px",
+    borderBottom: "1px solid #ccc",
+  },
+  loading: {
+    padding: "8px",
+    color: "#007bff",
+  },
+  error: {
+    padding: "8px",
+    color: "red",
+  },
+  noResults: {
+    padding: "8px",
+    color: "#999",
   },
 };
 
