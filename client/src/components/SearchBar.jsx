@@ -17,10 +17,11 @@ const SearchBar = () => {
     setError("");
     setResults([]);
 
+// API
     fetch(`https://api.example.com/search?q=${query}`)
       .then((response) => response.json())
       .then((data) => {
-        setResults(data.results);
+        setResults(data.results); // Adjust according to API response
         setLoading(false);
       })
       .catch((err) => {
@@ -31,16 +32,18 @@ const SearchBar = () => {
 
   return (
     <div style={styles.container}>
-      <input
-        type="text"
-        value={query}
-        onChange={handleInputChange}
-        placeholder="Search..."
-        style={styles.input}
-      />
-      <button onClick={handleSearch} style={styles.button}>
-        Search
-      </button>
+      <div style={styles.inputButtonContainer}>
+        <input
+          type="text"
+          value={query}
+          onChange={handleInputChange}
+          placeholder="Search..."
+          style={styles.input}
+        />
+        <button onClick={handleSearch} style={styles.button}>
+          Search
+        </button>
+      </div>
       {loading && <div style={styles.loading}>Loading...</div>}
       {error && <div style={styles.error}>{error}</div>}
       <div style={styles.resultsContainer}>
@@ -58,6 +61,7 @@ const SearchBar = () => {
   );
 };
 
+
 // Styling
 const styles = {
   container: {
@@ -65,19 +69,24 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
   },
+  inputButtonContainer: {
+    display: "flex",
+    alignItems: "center",
+    marginBottom: "16px",
+  },
   input: {
     padding: "8px",
     fontSize: "16px",
     border: "1px solid #ccc",
     borderRadius: "4px",
-    marginBottom: "8px",
+    marginRight: "8px",
   },
   button: {
     padding: "8px 16px",
     fontSize: "16px",
     border: "none",
     borderRadius: "4px",
-    backgroundColor: "#007bff",
+    backgroundColor: "rgb(192, 132, 252)",
     color: "white",
     cursor: "pointer",
   },
