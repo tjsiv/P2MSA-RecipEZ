@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
   return (
@@ -10,7 +11,7 @@ const Navbar = () => {
             <li className='text-pink-200 pr-4 text-2xl'><Link to='/favorites'>Favorites</Link></li>
             <li className='text-pink-200 pr-4 text-2xl'><Link to='/categories'>Categories</Link></li>
             <li className='text-pink-200 pr-4 text-2xl'><Link to='/feeling-lucky'>Feeling Lucky</Link></li>
-            <li className='text-pink-200 pr-4 text-2xl'><Link to='/user'>User</Link></li>
+            <li className='text-pink-200 pr-4 text-2xl'><Link to='/user'><FaUser/></Link></li>
         </ul>
     </div>
   )
