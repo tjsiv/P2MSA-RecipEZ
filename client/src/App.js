@@ -5,10 +5,8 @@ import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 import HomeCards from "./components/HomeCards";
 
-
 const App = () => {
-  const handleSearch = (query) => {
-  };
+  const handleSearch = (query) => {};
   //***************************************************************************************************************************************************************** */
   // const [user, setUser] = useState(null); // State to hold logged-in user data
 
@@ -47,13 +45,10 @@ const App = () => {
 
   // render() {
 
-        
-
   return (
     <Router>
       <div>
         <Navbar />
-        <HomeCards/>
         <Routes>
           {/* Home Route */}
           <Route path="/" element="" />
@@ -71,10 +66,8 @@ const App = () => {
           {/* Login Route */}
           <Route path="/user" element="" />
           {/* Recipe Details Route */}
-
         </Routes>
-         main
-
+        <HomeCards />
         <Footer />
       </div>
     </Router>
