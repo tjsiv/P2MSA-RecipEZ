@@ -71,14 +71,15 @@ code {
 .HomeCard-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 75vh;
+  align-items: top;
+  height: 70vh;
   background-color: black;
 }
 
 .card-container {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   width: 60%;
   max-width: 900px; /* Set a max-width to limit stretching */
   height: 40vh;
