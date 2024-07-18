@@ -4,6 +4,7 @@ import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 import RecipeCard from "./components/RecipeCard";
 
+
 const App = () => {
   const handleSearch = (query) => {
     console.log("Searching for:", query);
@@ -49,11 +50,10 @@ const App = () => {
   // render() {
   return ( 
     <div>
-      <header>
+      <header>        
         
-        <p>{/* {this.state.apiResponse} */}</p>
         <Navbar />
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} />        
         <Footer />
       </header>
     </div>
