@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { FaRegHeart } from "react-icons/fa";
 
 const RecipeCard = ({ results }) => {
   const handleAddToFavorites = async (recipeId) => {
@@ -32,8 +33,8 @@ const RecipeCard = ({ results }) => {
                 </div>
                 {/* Text Container */}
                 <div className="mt-4 flex justify-between md:text-left">
-                  <div>
-                    <h3 className="text-2xl pl-4">
+                  <div className="w-[450px]">
+                    <h3 className="text-2xl pl-4 w-[240px]">
                       <a href="#">
                         <span
                           aria-hidden="true"
@@ -49,7 +50,10 @@ const RecipeCard = ({ results }) => {
                     </p>
                   </div>
                   {/* Price */}
-                  <p className="text-xl font-medium text-blue-200">${Math.floor(Math.random() * (30 - 10 +1) + 10)}</p>
+                  <div className="w-[40px] h-[25px] hover:text-pink-400">
+                    <FaRegHeart className="h-[25px] mt-1 mr-2 scale-125 hover:scale-150 hover:cursor-grab"/>
+                  </div>
+                  {/* <p className="text-xl font-medium text-blue-200">${Math.floor(Math.random() * (30 - 10 +1) + 10)}</p> */}
                 </div>
               </div>
           ))}
