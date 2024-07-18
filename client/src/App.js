@@ -5,6 +5,7 @@ import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 import RecipeCard from "./components/RecipeCard";
 
+
 const App = () => {
   const handleSearch = (query) => {
     console.log("Searching for:", query);
@@ -48,6 +49,9 @@ const App = () => {
   // }
 
   // render() {
+
+        
+
   return (
     <Router>
       <div>
@@ -71,6 +75,7 @@ const App = () => {
           {/* Recipe Details Route */}
 
         </Routes>
+         main
         <Footer />
       </div>
     </Router>

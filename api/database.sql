@@ -38,6 +38,10 @@ CREATE TABLE users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE categories (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(50) UNIQUE NOT NULL
+);
 
 --REMAKING THE TABLE WILL LEAVE OLD ONE COMMENTED OUT FOR REFERENCE
 CREATE TABLE recipes (
@@ -52,21 +56,18 @@ CREATE TABLE recipes (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-INSERT INTO recipes (name, category, instructions, pictures, yt_link, ingredients, measurements)
+INSERT INTO recipes (name, category_id, instructions, pictures, yt_link, ingredients, measurements)
 VALUES (
     'Spaghetti Carbonara',
-    'Pasta',
+    null,
     '1. Cook spaghetti according to package instructions. 2. In a large skillet, cook pancetta until crispy. 3. Whisk eggs, Parmesan cheese, and black pepper in a bowl. 4. Drain spaghetti and toss with pancetta. 5. Remove skillet from heat and mix in egg mixture until creamy.',
     '{"https://example.com/spaghetti_carbonara.jpg", "https://example.com/spaghetti_carbonara2.jpg"}',
     'https://www.youtube.com/watch?v=123456',
-    '["spaghetti", "pancetta", "eggs", "Parmesan cheese", "black pepper"]',
-    '["200g", "150g", "2", "50g", "to taste"]'
+    '{"spaghetti", "pancetta", "eggs", "Parmesan cheese", "black pepper"}',
+    '{"200g", "150g", "2", "50g", "to taste"}'
 );
 
-CREATE TABLE categories (
-    category_id SERIAL PRIMARY KEY,
-    name VARCHAR(50) UNIQUE NOT NULL
-);
+
 
 CREATE TABLE favorites (
     favorite_id SERIAL PRIMARY KEY,
