@@ -9,6 +9,7 @@
   color: white;
 }
 
+
 h1, h2, h3, h4, h5, h6{
   font-family: 'Architects Daughter', cursive;
 }
@@ -32,6 +33,7 @@ code {
     monospace;
 }
 
+/* Footer start */
 .footer {
   background-color: black;
   padding: 20px;
@@ -63,3 +65,73 @@ code {
   width: 20px; 
   height: 20px; 
 }
+/* Footer end*/
+
+/* HomeCard Styling start */
+.HomeCard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  background-color: black;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  max-width: 900px; /* Set a max-width to limit stretching */
+  height: 40vh;
+  background-color: black;
+}
+
+.card {
+  background-color: rgb(75, 85, 99);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px; 
+  height: 300px; 
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  color: black;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  cursor: pointer;
+}
+
+.card:not(:last-child) {
+  margin-right: 20px;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  font-size: larger;
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  align-self: center;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column; 
+    align-items: center;
+  }
+  
+  .card {
+    width: 100%;
+    height: auto; 
+    margin-bottom: 20px;
+  }
+}
+/* HomeCard Styling end */

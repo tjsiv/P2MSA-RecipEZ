@@ -3,14 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
-import RecipeCard from "./components/RecipeCard";
+import HomeCards from "./components/HomeCards";
 
 const App = () => {
-  const handleSearch = (query) => {
-    console.log("Searching for:", query);
-    // Perform search or API call here
-    // www.themealdb.com/api/json/v1/1/search.php?s=
-  };
+  const handleSearch = (query) => {};
   //***************************************************************************************************************************************************************** */
   // const [user, setUser] = useState(null); // State to hold logged-in user data
 
@@ -48,6 +44,7 @@ const App = () => {
   // }
 
   // render() {
+
   return (
     <Router>
       <div>
@@ -69,8 +66,8 @@ const App = () => {
           {/* Login Route */}
           <Route path="/user" element="" />
           {/* Recipe Details Route */}
-
         </Routes>
+        <HomeCards />
         <Footer />
       </div>
     </Router>
