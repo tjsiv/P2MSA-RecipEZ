@@ -7,4 +7,4 @@ import Footer from "./Footer";
 import SearchBar from "./SearchBar";
 import UserProfile from "./UserProfile";
 
-export { Favorites, Navbar, LoginForm, RecipeCard, RegisterForm, Footer, SearchBar, UserProfile }; 
+export { Favorites, Navbar, LoginForm, RecipeCard, RegisterForm, Footer, SearchBar, UserProfile };

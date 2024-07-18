@@ -9,6 +9,7 @@
   color: white;
 }
 
+
 h1, h2, h3, h4, h5, h6{
   font-family: 'Architects Daughter', cursive;
 }
@@ -32,19 +33,101 @@ code {
     monospace;
 }
 
+/* HomeCard Styling start */
+.HomeCard-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Adjusted to align items at the top */
+  min-height: calc(100vh - 100px); /* Ensure HomeCard-container takes up at least the viewport height minus footer height */
+  background-color: black;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 60%;
+  max-width: 900px; /* Set a max-width to limit stretching */
+  margin-top: 20px; /* Added margin top to separate from footer */
+  background-color: black;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 350px; 
+  height: 400px; 
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  color: black;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  cursor: pointer;
+}
+
+.card:not(:last-child) {
+  margin-right: 20px;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  font-size: larger;
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  align-self: center;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column; 
+    align-items: center;
+  }
+  
+  .card {
+    width: 100%;
+    height: auto; 
+    margin-bottom: 20px;
+  }
+}
+/* HomeCard Styling end */
+
+/* Footer start */
+/* Footer start */
 .footer {
   background-color: black;
   padding: 20px;
   text-align: center;
+  bottom: 0;
+  width: 100%;
+  margin-top: 100px;
 }
 
 .footer-content {
   max-width: 960px;
   margin: 0 auto;
+  padding: 10px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer-links {
   margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; 
 }
 
 .footer-link {
@@ -52,6 +135,8 @@ code {
   display: inline-flex;
   align-items: center;
   font-size: large;
+  color: white; 
+  margin: 5px 0; 
 }
 
 .footer-link:hover {
@@ -60,6 +145,88 @@ code {
 
 .footer-icon {
   margin-right: 5px;
-  width: 20px; 
-  height: 20px; 
+  width: 20px;
+  height: 20px;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    padding: 20px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+/* Footer end */
+
+/* HomeCard Styling start */
+.HomeCard-container {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  height: 70vh;
+  background-color: black;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 60%;
+  max-width: 900px; /* Set a max-width to limit stretching */
+  height: 40vh;
+  background-color: black;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 350px; 
+  height: 400px; 
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  color: black;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  cursor: pointer;
+}
+
+.card:not(:last-child) {
+  margin-right: 20px;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  font-size: larger;
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  align-self: center;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column; 
+    align-items: center;
+  }
+  
+  .card {
+    width: 100%;
+    height: auto; 
+    margin-bottom: 20px;
+  }
+}
+/* HomeCard Styling end */

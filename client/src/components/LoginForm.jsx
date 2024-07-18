@@ -8,7 +8,7 @@ const LoginForm = ({ onLoginSuccess }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("/login", { username, password });
+      const response = await axios.post("http://localhost:9000/users/login", { username, password });
       console.log("User logged in:", response.data);
 
       // Call parent component callback function with user data
