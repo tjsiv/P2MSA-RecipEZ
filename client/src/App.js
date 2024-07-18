@@ -2,13 +2,10 @@ import React, { Component } from "react";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
-import RecipeCard from "./components/RecipeCard";
+import HomeCards from "./components/HomeCards";
 
 const App = () => {
   const handleSearch = (query) => {
-    console.log("Searching for:", query);
-    // Perform search or API call here
-    // www.themealdb.com/api/json/v1/1/search.php?s=
   };
 //***************************************************************************************************************************************************************** */
   // const [user, setUser] = useState(null); // State to hold logged-in user data
@@ -54,6 +51,7 @@ const App = () => {
         <p>{/* {this.state.apiResponse} */}</p>
         <Navbar />
         <SearchBar onSearch={handleSearch} />
+        <HomeCards/>
         <Footer />
       </header>
     </div>
