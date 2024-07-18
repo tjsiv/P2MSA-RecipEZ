@@ -103,6 +103,7 @@ code {
 /* HomeCard Styling end */
 
 /* Footer start */
+/* Footer start */
 .footer {
   background-color: black;
   padding: 20px;
@@ -110,15 +111,24 @@ code {
   position: absolute;
   bottom: 0;
   width: 100%;
+  margin-top: 100px;
 }
 
 .footer-content {
   max-width: 960px;
   margin: 0 auto;
+  padding: 10px; /* Added padding for spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer-links {
   margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; /* Added gap between links */
 }
 
 .footer-link {
@@ -126,6 +136,8 @@ code {
   display: inline-flex;
   align-items: center;
   font-size: large;
+  color: white; /* Ensures link color is visible */
+  margin: 5px 0; /* Adds vertical spacing between links */
 }
 
 .footer-link:hover {
@@ -134,11 +146,22 @@ code {
 
 .footer-icon {
   margin-right: 5px;
-  width: 20px; 
-  height: 20px; 
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    padding: 20px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 /* Footer end */
-
 
 /* HomeCard Styling start */
 .HomeCard-container {
