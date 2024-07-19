@@ -10,40 +10,50 @@ router.get('/', function(req, res, next) {
 
 //favorite a recipe from button
 router.post("/favorites", async (req, res) => {
+  const { userId, recipeId, recipe_name, category_id, instructions, pictures, yt_link, ingredients, measurements } = req.body;
+
   try {
-    const {
-      title,
-      description,
-      category_id,
-      instructions,
-      pictures,
-      yt_link,
-      ingredients,
-      measurements,
-      userId
-    } = req.body;
-
-    // Insert new recipe into recipes table
-    const newRecipe = await pool.query(
-      "INSERT INTO recipes (title, description, category_id, instructions, pictures, yt_link, ingredients, measurements) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
-      [title, description, category_id, instructions, pictures, yt_link, ingredients, measurements]
-    );
-
-    const recipeId = newRecipe.rows[0].recipe_id;
-
-    // Insert into favorites table for the user
-    const newFavorite = await pool.query(
-      "INSERT INTO favorites (user_id, recipe_id) VALUES ($1, $2) RETURNING *",
+    // Check if the favorite already exists for the user
+    const existingFavorite = await pool.query(
+      "SELECT * FROM favorites WHERE user_id = $1 AND recipe_id = $2",
       [userId, recipeId]
     );
 
-    // Return the new recipe and favorite details
-    res.json({
-      recipe: newRecipe.rows[0],
-      favorite: newFavorite.rows[0]
-    });
+    if (existingFavorite.rows.length > 0) {
+      // If favorite exists, remove it (unfavorite)
+      await pool.query(
+        "DELETE FROM favorites WHERE user_id = $1 AND recipe_id = $2",
+        [userId, recipeId]
+      );
+
+      res.json({ message: "Recipe removed from favorites" });
+    } else {
+      // Check if the recipe exists in the recipes table
+      let newRecipeId = recipeId; // Initialize with recipeId from request body
+      const existingRecipe = await pool.query(
+        "SELECT recipe_id FROM recipes WHERE recipe_id = $1",
+        [recipeId]
+      );
+
+      if (existingRecipe.rows.length === 0) {
+        // Recipe does not exist, insert it into recipes table
+        const newRecipe = await pool.query(
+          "INSERT INTO recipes (recipe_id, recipe_name, category_id, instructions, pictures, yt_link, ingredients, measurements) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING recipe_id",
+          [recipeId, recipe_name, category_id, instructions, pictures, yt_link, ingredients, measurements]
+        );
+        newRecipeId = newRecipe.rows[0].recipe_id;
+      }
+
+      // Insert into favorites table
+      const newFavorite = await pool.query(
+        "INSERT INTO favorites (user_id, recipe_id) VALUES ($1, $2) RETURNING *",
+        [userId, newRecipeId]
+      );
+
+      res.json({ favorite: newFavorite.rows[0], message: "Recipe added to favorites" });
+    }
   } catch (err) {
-    console.error("Error adding recipe to favorites:", err);
+    console.error("Error managing favorites:", err);
     res.status(500).json({ error: "Server Error" });
   }
 });
@@ -82,11 +92,11 @@ router.get("/recipes/:id", async(req, res) => {
 router.put("/recipes/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, category_id, instructions, pictures, yt_link, ingredients, measurements } = req.body;
+    const { recipe_name, category_id, instructions, pictures, yt_link, ingredients, measurements } = req.body;
 
     const updatedRecipe = await pool.query(
-      "UPDATE recipes SET name=$1, category_id=$2, instructions=$3, pictures=$4, yt_link=$5, ingredients=$6, measurements=$7, updated_at=NOW() WHERE recipe_id=$8 RETURNING *",
-      [name, category_id, instructions, pictures, yt_link, ingredients, measurements, id]
+      "UPDATE recipes SET recipe_name=$1, category_id=$2, instructions=$3, pictures=$4, yt_link=$5, ingredients=$6, measurements=$7, updated_at=NOW() WHERE recipe_id=$8 RETURNING *",
+      [recipe_name, category_id, instructions, pictures, yt_link, ingredients, measurements, id]
     );
 
     res.json(updatedRecipe.rows[0]);
