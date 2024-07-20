@@ -36,10 +36,6 @@ const App = () => {
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/categories" element={<Categories />} />
           <Route
-            path="/feeling-lucky"
-            element={<div>Feeling Lucky Page</div>}
-          />
-          <Route
             path="/login"
             element={<LoginForm onLoginSuccess={handleLoginSuccess} />}
           />

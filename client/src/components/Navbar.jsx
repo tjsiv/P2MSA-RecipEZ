@@ -30,9 +30,6 @@ const Navbar = ({ user }) => {
         <li className="text-pink-200 pr-4 text-2xl">
           <Link to="/categories">Categories</Link>
         </li>
-        <li className="text-pink-200 pr-4 text-2xl">
-          <Link to="/feeling-lucky">Feeling Lucky</Link>
-        </li>
         {!user && (
           <>
             <li className="text-pink-200 pr-4 text-2xl">
