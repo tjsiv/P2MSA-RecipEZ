@@ -13,6 +13,7 @@ import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import UserProfile from "./components/UserProfile";
 import Favorites from "./components/Favorites"
+import Categories from "./components/Categories"
 
 const App = () => {
   const [user, setUser] = useState(null); // State to hold logged-in user data when login in submitted
@@ -33,7 +34,7 @@ const App = () => {
           <Route path="/" element={<HomeCards />} />
           <Route path="/search" element={<SearchBar onSearch={() => {}} />} />
           <Route path="/favorites" element={<Favorites />} />
-          <Route path="/categories" element={<div>Categories Page</div>} />
+          <Route path="/categories" element={<Categories />} />
           <Route
             path="/feeling-lucky"
             element={<div>Feeling Lucky Page</div>}
