@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 import HomeCards from "./components/HomeCards";
+import Favorites from "./components/Favorites"
 
 const App = () => {
   const handleSearch = (query) => {};
@@ -58,7 +59,7 @@ const App = () => {
             element={<SearchBar onSearch={handleSearch} />}
           />
           {/* Favorites Route */}
-          <Route path="/favorites" element="" />
+          <Route path="/favorites" element={<Favorites/>} />
           {/* Categories Route */}
           <Route path="/categories" element="" />
           {/* Feeling Lucky Route */}
