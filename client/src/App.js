@@ -4,7 +4,6 @@ import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 import HomeCards from "./components/HomeCards";
-import LoginForm from "./components/LoginForm.jsx"
 
 const App = () => {
   const handleSearch = (query) => {};
@@ -68,8 +67,7 @@ const App = () => {
           <Route path="/user" element="" />
           {/* Recipe Details Route */}
         </Routes>
-        {/* <HomeCards /> */}
-        <LoginForm />
+        <HomeCards />
         <Footer />
       </div>
     </Router>
