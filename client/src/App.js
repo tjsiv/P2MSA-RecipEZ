@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 import HomeCards from "./components/HomeCards";
+import PreviewPopup from "./components/PreviewPopup";
 
 const App = () => {
   const handleSearch = (query) => {};
@@ -49,6 +50,7 @@ const App = () => {
     <Router>
       <div>
         <Navbar />
+        {/* <PreviewPopup /> */}
         <Routes>
           {/* Home Route */}
           <Route path="/" element="" />
