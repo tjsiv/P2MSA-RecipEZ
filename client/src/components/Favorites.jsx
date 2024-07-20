@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Favorites = ({ recipes }) => { 
+const Favorites = ({ recipes }) => {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
   const removeFromFavorites = (id) => {

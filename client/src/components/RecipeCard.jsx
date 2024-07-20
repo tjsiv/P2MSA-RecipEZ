@@ -2,10 +2,10 @@ import React from "react";
 import axios from "axios";
 import FavoriteButton from "./FavoriteButton";
 
-const RecipeCard = ({ results }) => {  
+const RecipeCard = ({ results, handleModal }) => {  
   
   return (
-    console.log(results),
+    // console.log(results),
     (
       <div>
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 ">
@@ -38,12 +38,11 @@ const RecipeCard = ({ results }) => {
                       {/* Ingredients */}
                       {result.strIngredient1}, {result.strIngredient2}, {result.strIngredient3}, {result.strIngredient4}, {result.strIngredient5}, {result.strIngredient6}, {result.strIngredient7}, {result.strIngredient8}, {result.strIngredient9}, {result.strIngredient10}
                     </p>
+                    <button className="bg-purple-400 w-40 h-10 rounded-full font-bold uppercase" onClick={() =>handleModal(result)}>
+                      View Recipe
+                    </button>
                   </div>
-                  {/* Price */}
-                  <div className="w-[40px] h-[25px] hover:text-pink-400">
-                    <FavoriteButton />
-                  </div>
-                  {/* <p className="text-xl font-medium text-blue-200">${Math.floor(Math.random() * (30 - 10 +1) + 10)}</p> */}
+                  
                 </div>
               </div>
           ))}
