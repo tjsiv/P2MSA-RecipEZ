@@ -9,7 +9,6 @@ import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 import HomeCards from "./components/HomeCards";
-import Favorites from "./components/Favorites"
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import UserProfile from "./components/UserProfile";
@@ -38,15 +37,6 @@ const App = () => {
             path="/feeling-lucky"
             element={<div>Feeling Lucky Page</div>}
           />
-          {/* Favorites Route */}
-          <Route path="/favorites" element={<Favorites/>} />
-          {/* Categories Route */}
-          <Route path="/categories" element="" />
-          {/* Feeling Lucky Route */}
-          <Route path="/feeling-lucky" element="" />
-          {/* Login Route */}
-          <Route path="/user" element="" />
-          {/* Recipe Details Route */}
           <Route
             path="/login"
             element={<LoginForm onLoginSuccess={handleLoginSuccess} />}
