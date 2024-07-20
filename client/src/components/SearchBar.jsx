@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import RecipeCard from "./RecipeCard";
+import PreviewPopup from "./PreviewPopup";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [modal, setModal] = useState(false);
+  const [selectedData, setSelectedData] = useState(null);
 
   const handleInputChange = (event) => {
     setQuery(event.target.value);
@@ -34,6 +37,11 @@ const SearchBar = () => {
       });
   };
 
+  const handleModal = (result = null) => {
+    setSelectedData(result);
+    setModal(!modal);
+  };
+
   return (
     <div style={styles.container}>
       <div style={styles.inputButtonContainer}>
@@ -53,12 +61,13 @@ const SearchBar = () => {
       {error && <div style={styles.error}>{error}</div>}
       <div style={styles.resultsContainer}>
         {results.length > 0 ? (
-          <RecipeCard results={results} />
+          <RecipeCard results={results} handleModal={handleModal}/>
         ) : (
           !loading &&
           query && <div style={styles.noResults}>No results found</div>
         )}
       </div>
+      {modal ? <PreviewPopup data={selectedData} onClose={handleModal} /> : null}
     </div>
   );
 };

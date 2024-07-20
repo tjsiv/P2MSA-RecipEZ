@@ -1,62 +1,42 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 import HomeCards from "./components/HomeCards";
 import Favorites from "./components/Favorites"
+import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
+import UserProfile from "./components/UserProfile";
 
 const App = () => {
-  const handleSearch = (query) => {};
-  //***************************************************************************************************************************************************************** */
-  // const [user, setUser] = useState(null); // State to hold logged-in user data
+  const [user, setUser] = useState(null); // State to hold logged-in user data when login in submitted
 
-  // const handleLoginSuccess = (userData) => {
-  //   setUser(userData); // Set logged-in user data
-  // };
+  const handleLoginSuccess = (userData) => {
+    setUser(userData); // Set logged-in user data when logging in
+  };
 
-  // const handleLogout = () => {
-  //   setUser(null); // Clear logged-in user data (logout functionality)                                               this is for  login checking
-  // };
-  //
-  // return(
-  // <div>
-  //     {!user ? (
-  //       <LoginForm onLoginSuccess={handleLoginSuccess} />
-  //     ) : (
-  //       <UserProfile user={user} onLogout={handleLogout} />
-  //     )}
-  //   </div>
-  // );
-  //*************************************************************************************************************************************************************** */
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { apiResponse: "" };
-  // }
-
-  // callAPI() {
-  //   fetch("http://localhost:9000/testAPI")
-  //     .then(res => res.text())
-  //     .then(res => this.setState({ apiResponse: res }));
-  // }
-
-  // componentDidMount() {
-  //   this.callAPI();
-  // }
-
-  // render() {
+  const handleLogout = () => {
+    setUser(null); // Clear logged-in user data when logged out
+  };
 
   return (
     <Router>
       <div>
-        <Navbar />
+        <Navbar user={user} />
         <Routes>
-          {/* Home Route */}
-          <Route path="/" element="" />
-          {/* Search Route */}
+          <Route path="/" element={<HomeCards />} />
+          <Route path="/search" element={<SearchBar onSearch={() => {}} />} />
+          <Route path="/favorites" element={<div>Favorites Page</div>} />
+          <Route path="/categories" element={<div>Categories Page</div>} />
           <Route
-            path="/search"
-            element={<SearchBar onSearch={handleSearch} />}
+            path="/feeling-lucky"
+            element={<div>Feeling Lucky Page</div>}
           />
           {/* Favorites Route */}
           <Route path="/favorites" element={<Favorites/>} />
@@ -67,13 +47,28 @@ const App = () => {
           {/* Login Route */}
           <Route path="/user" element="" />
           {/* Recipe Details Route */}
+          <Route
+            path="/login"
+            element={<LoginForm onLoginSuccess={handleLoginSuccess} />}
+          />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route
+            path="/user"
+            element={
+              user ? (
+                <UserProfile user={user} onLogout={handleLogout} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+          <Route path="*" element={<Navigate to="/" />} />
+          {/* re-directs to 404 or home */}
         </Routes>
-        <HomeCards />
         <Footer />
       </div>
     </Router>
   );
 };
-// }
 
 export default App;
