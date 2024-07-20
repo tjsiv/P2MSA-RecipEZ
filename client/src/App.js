@@ -9,11 +9,10 @@ import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 import HomeCards from "./components/HomeCards";
-import LoginForm from "./components/LoginForm";
-import RegisterForm from "./components/RegisterForm";
 import UserProfile from "./components/UserProfile";
-import Favorites from "./components/Favorites"
-import Categories from "./components/Categories"
+import Favorites from "./components/Favorites";
+import Categories from "./components/Categories";
+import Login from "./components/Login";
 
 const App = () => {
   const [user, setUser] = useState(null); // State to hold logged-in user data when login in submitted
@@ -37,9 +36,8 @@ const App = () => {
           <Route path="/categories" element={<Categories />} />
           <Route
             path="/login"
-            element={<LoginForm onLoginSuccess={handleLoginSuccess} />}
+            element={<Login onLoginSuccess={handleLoginSuccess} />} // Updated component
           />
-          <Route path="/register" element={<RegisterForm />} />
           <Route
             path="/user"
             element={

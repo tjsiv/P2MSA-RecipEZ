@@ -31,16 +31,14 @@ const Navbar = ({ user }) => {
           <Link to="/categories">Categories</Link>
         </li>
         {!user && (
-          <>
-            <li className="text-pink-200 pr-4 text-2xl">
-              <Link to="/register">Register</Link>
-            </li>
-            <li className="text-pink-200 pr-4 text-2xl">
-              <Link to="/login">Login</Link>
-            </li>
-          </>
+          <li className="text-pink-200 pr-4 text-2xl">
+            <Link to="/login">Login</Link>
+          </li>
         )}
-        <li className="text-pink-200 pr-4 text-2xl cursor-pointer" onClick={handleUserIconClick}>
+        <li
+          className="text-pink-200 pr-4 text-2xl cursor-pointer"
+          onClick={handleUserIconClick}
+        >
           <FaUser />
         </li>
       </ul>

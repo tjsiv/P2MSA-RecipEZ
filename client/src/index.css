@@ -43,10 +43,10 @@ code {
 .HomeCard-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Adjusted to align items at the top */
+  align-items: flex-start;
   min-height: calc(
     100vh - 100px
-  ); /* Ensure HomeCard-container takes up at least the viewport height minus footer height */
+  ); 
   background-color: black;
 }
 
@@ -55,8 +55,8 @@ code {
   justify-content: space-around;
   flex-wrap: wrap;
   width: 60%;
-  max-width: 900px; /* Set a max-width to limit stretching */
-  margin-top: 20px; /* Added margin top to separate from footer */
+  max-width: 900px;
+  margin-top: 20px; 
   background-color: black;
 }
 
@@ -110,7 +110,6 @@ code {
 }
 /* HomeCard Styling end */
 
-/* Footer start */
 /* Footer start */
 .footer {
   background-color: black;
@@ -170,75 +169,6 @@ code {
 }
 /* Footer end */
 
-/* HomeCard Styling start */
-.HomeCard-container {
-  display: flex;
-  justify-content: center;
-  align-items: top;
-  height: 70vh;
-  background-color: black;
-}
-
-.card-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  width: 60%;
-  max-width: 900px; /* Set a max-width to limit stretching */
-  height: 40vh;
-  background-color: black;
-}
-
-.card {
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 350px;
-  height: 400px;
-  padding: 20px;
-  margin: 20px;
-  text-align: center;
-  color: black;
-  transition: transform 0.3s;
-  display: flex;
-  flex-direction: column;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  cursor: pointer;
-}
-
-.card:not(:last-child) {
-  margin-right: 20px;
-}
-
-.card h2 {
-  margin-bottom: 10px;
-  font-size: larger;
-}
-
-.card img {
-  max-width: 100%;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  align-self: center;
-}
-
-/* Responsive Layout */
-@media (max-width: 768px) {
-  .card-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card {
-    width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-  }
-}
-/* HomeCard Styling end */
-
 /* Register Styling start */
 .register-container {
   max-width: 300px;
@@ -253,35 +183,47 @@ code {
 .register-container h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: black;
-  font-weight: 600;
-  font-size: x-large;
 }
 
 .register-container input {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
+  margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+.register-container .error-message {
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .register-container button {
   width: 100%;
   padding: 10px;
-  background-color: #2196f3;
-  color: white;
+  margin: 10px 0;
   border: none;
   border-radius: 5px;
+  background-color: #007bff;
+  color: white;
   cursor: pointer;
 }
 
 .register-container button:hover {
-  background-color: #0b7dda;
+  background-color: #0056b3;
 }
-/* Register Styling End */
 
-/* LoginForm Styling start */
+.register-container button:nth-child(2) {
+  background-color: #6c757d;
+}
+
+.register-container button:nth-child(2):hover {
+  background-color: #5a6268;
+}
+/* Register Styling end */
+
+/* Login Styling start */
 .login-container {
   max-width: 300px;
   margin: auto;
@@ -303,7 +245,7 @@ code {
 .login-container input {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
+  margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
   color: black;
@@ -311,20 +253,32 @@ code {
 
 .login-container .error-message {
   color: red;
-  margin-bottom: 15px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .login-container button {
   width: 100%;
   padding: 10px;
-  background-color: #4caf50;
-  color: white;
+  margin: 10px 0;
   border: none;
   border-radius: 5px;
+  background-color: #007bff;
+  color: white;
   cursor: pointer;
 }
 
 .login-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Login Form Styling Start */
+.register-button {
+  background-color: #4caf50;
+  border: none; 
+}
+
+.login-container .register-button:hover {
   background-color: #45a049;
 }
-/* Login Form Styling End */
+/* Login Styling end */
