@@ -1,18 +1,9 @@
 import React from "react";
 import axios from "axios";
+import FavoriteButton from "./FavoriteButton";
 
-const RecipeCard = ({ results }) => {
-  const handleAddToFavorites = async (recipeId) => {
-    try {
-      // Example: Make a POST request to  backend to save the recipe as favorite
-      const response = await axios.post("/favorites", { recipeId });
-      console.log("Recipe added to favorites:", response.data);
-      // Optionally, you can update UI to reflect the change (e.g., change button appearance)
-    } catch (error) {
-      console.error("Error adding recipe to favorites:", error);
-      // Handle error: show error message or retry logic
-    }
-  };
+const RecipeCard = ({ results }) => {  
+  
   return (
     console.log(results),
     (
@@ -32,8 +23,8 @@ const RecipeCard = ({ results }) => {
                 </div>
                 {/* Text Container */}
                 <div className="mt-4 flex justify-between md:text-left">
-                  <div>
-                    <h3 className="text-2xl pl-4">
+                  <div className="w-[450px]">
+                    <h3 className="text-2xl pl-4 w-[240px]">
                       <a href="#">
                         <span
                           aria-hidden="true"
@@ -49,7 +40,10 @@ const RecipeCard = ({ results }) => {
                     </p>
                   </div>
                   {/* Price */}
-                  <p className="text-xl font-medium text-blue-200">${Math.floor(Math.random() * (30 - 10 +1) + 10)}</p>
+                  <div className="w-[40px] h-[25px] hover:text-pink-400">
+                    <FavoriteButton />
+                  </div>
+                  {/* <p className="text-xl font-medium text-blue-200">${Math.floor(Math.random() * (30 - 10 +1) + 10)}</p> */}
                 </div>
               </div>
           ))}

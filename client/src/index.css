@@ -33,64 +33,30 @@ code {
     monospace;
 }
 
-/* Footer start */
-.footer {
-  background-color: black;
-  padding: 20px;
-  text-align: center;
-}
-
-.footer-content {
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.footer-links {
-  margin-top: 10px;
-}
-
-.footer-link {
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  font-size: large;
-}
-
-.footer-link:hover {
-  color: lightblue;
-}
-
-.footer-icon {
-  margin-right: 5px;
-  width: 20px; 
-  height: 20px; 
-}
-/* Footer end*/
-
 /* HomeCard Styling start */
 .HomeCard-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 75vh;
+  align-items: flex-start; /* Adjusted to align items at the top */
+  min-height: calc(100vh - 100px); /* Ensure HomeCard-container takes up at least the viewport height minus footer height */
   background-color: black;
 }
 
 .card-container {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   width: 60%;
   max-width: 900px; /* Set a max-width to limit stretching */
-  height: 40vh;
+  margin-top: 20px; /* Added margin top to separate from footer */
   background-color: black;
 }
 
 .card {
-  background-color: rgb(75, 85, 99);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 250px; 
-  height: 300px; 
+  width: 350px; 
+  height: 400px; 
   padding: 20px;
   margin: 20px;
   text-align: center;
@@ -136,8 +102,136 @@ code {
 }
 /* HomeCard Styling end */
 
-/* Register Styling start */
+/* Footer start */
+/* Footer start */
+.footer {
+  background-color: black;
+  padding: 20px;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  margin-top: 100px;
+}
 
+.footer-content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 10px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-links {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; 
+}
+
+.footer-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: large;
+  color: white; 
+  margin: 5px 0; 
+}
+
+.footer-link:hover {
+  color: lightblue;
+}
+
+.footer-icon {
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    padding: 20px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+/* Footer end */
+
+/* HomeCard Styling start */
+.HomeCard-container {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  height: 70vh;
+  background-color: black;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 60%;
+  max-width: 900px; /* Set a max-width to limit stretching */
+  height: 40vh;
+  background-color: black;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 350px; 
+  height: 400px; 
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  color: black;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  cursor: pointer;
+}
+
+.card:not(:last-child) {
+  margin-right: 20px;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  font-size: larger;
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  align-self: center;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column; 
+    align-items: center;
+  }
+  
+  .card {
+    width: 100%;
+    height: auto; 
+    margin-bottom: 20px;
+  }
+}
+/* HomeCard Styling end */
+
+RegisterForm/* Register Styling start */
 .register-container {
   max-width: 300px;
   margin: auto;
@@ -176,4 +270,51 @@ code {
 
 .register-container button:hover {
   background-color: #0b7dda;
+}
+
+/* LoginForm Styling start */
+.login-container {
+  max-width: 300px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: black;
+  font-size: x-large;
+  font-weight: 600;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: black;
+}
+
+.login-container .error-message {
+  color: red;
+  margin-bottom: 15px;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #45a049;
 }

@@ -46,7 +46,7 @@ CREATE TABLE categories (
 --REMAKING THE TABLE WILL LEAVE OLD ONE COMMENTED OUT FOR REFERENCE
 CREATE TABLE recipes (
     recipe_id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    recipe_name VARCHAR(100) NOT NULL,
     category_id INT REFERENCES categories(category_id),
     instructions TEXT,
     pictures TEXT[],
