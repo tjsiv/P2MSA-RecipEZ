@@ -17,15 +17,16 @@ const LoginForm = ({ onLoginSuccess }) => {
       });
       console.log("User logged in:", response.data);
 
-      // Calling the parent component callback function with user data
+      // Calling parent component callback function with user data
       onLoginSuccess(response.data.user);
     } catch (error) {
       console.error("Login failed:", error.response?.data);
+
       if (error.response?.status === 404) {
-        setError("User not registered. Redirecting to registration page.");
+        setError("User not found. Redirecting to registration...");
         setTimeout(() => {
           navigate("/register");
-        }, 2000); // Redirecting after 2 seconds
+        }, 2000); // Waiting for 2 seconds before redirecting
       } else {
         setError("Invalid username or password");
       }

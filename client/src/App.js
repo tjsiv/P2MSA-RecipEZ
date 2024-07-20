@@ -9,36 +9,39 @@ import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 import HomeCards from "./components/HomeCards";
-import UserProfile from "./components/UserProfile";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
+import UserProfile from "./components/UserProfile";
 
 const App = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // State to hold logged-in user data when login in submitted
 
   const handleLoginSuccess = (userData) => {
-    setUser(userData);
+    setUser(userData); // Set logged-in user data when logging in
   };
 
   const handleLogout = () => {
-    setUser(null);
+    setUser(null); // Clear logged-in user data when logged out
   };
 
   return (
     <Router>
       <div>
-        <Navbar />
+        <Navbar user={user} />
         <Routes>
           <Route path="/" element={<HomeCards />} />
-          <Route path="/search" element={<SearchBar />} />
-          <Route path="/favorites" element={<div>Favorites</div>} />
-          <Route path="/categories" element={<div>Categories</div>} />
-          <Route path="/feeling-lucky" element={<div>Feeling Lucky</div>} />
-          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/search" element={<SearchBar onSearch={() => {}} />} />
+          <Route path="/favorites" element={<div>Favorites Page</div>} />
+          <Route path="/categories" element={<div>Categories Page</div>} />
+          <Route
+            path="/feeling-lucky"
+            element={<div>Feeling Lucky Page</div>}
+          />
           <Route
             path="/login"
             element={<LoginForm onLoginSuccess={handleLoginSuccess} />}
           />
+          <Route path="/register" element={<RegisterForm />} />
           <Route
             path="/user"
             element={
@@ -49,6 +52,8 @@ const App = () => {
               )
             }
           />
+          <Route path="*" element={<Navigate to="/" />} />
+          {/* re-directs to 404 or home */}
         </Routes>
         <Footer />
       </div>

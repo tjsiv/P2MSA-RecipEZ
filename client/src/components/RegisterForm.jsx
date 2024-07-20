@@ -17,7 +17,8 @@ const RegisterForm = () => {
         { username, email, password }
       );
       console.log("User registered:", response.data);
-      // Redirect to login page upon successful registration
+
+      // Redirecting to login page after successful registration
       navigate("/login");
     } catch (error) {
       console.error("Registration failed:", error);
