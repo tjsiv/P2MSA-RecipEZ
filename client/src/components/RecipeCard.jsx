@@ -5,14 +5,13 @@ import FavoriteButton from "./FavoriteButton";
 const RecipeCard = ({ results, handleModal }) => {  
   
   return (
-    // console.log(results),
     (
       <div>
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 ">
           <h2 className="text-2xl font-bold tracking-tight">Recipes:</h2>
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {results.map((result, index) => (
-              <div key={index} className="group relative">
+              <div key={index} className="group relative" onClick={() =>handleModal(result)}>
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                   {/* Image */}
                   <img
@@ -38,11 +37,10 @@ const RecipeCard = ({ results, handleModal }) => {
                       {/* Ingredients */}
                       {result.strIngredient1}, {result.strIngredient2}, {result.strIngredient3}, {result.strIngredient4}, {result.strIngredient5}, {result.strIngredient6}, {result.strIngredient7}, {result.strIngredient8}, {result.strIngredient9}, {result.strIngredient10}
                     </p>
-                    <button className="bg-purple-400 w-40 h-10 rounded-full font-bold uppercase" onClick={() =>handleModal(result)}>
-                      View Recipe
-                    </button>
+                    <div className="absolute bottom-0 right-0 z-21 flex justify-end items-end mb-2 w-[20px]">
+                      <FavoriteButton className="ml-4"/>
+                    </div>
                   </div>
-                  
                 </div>
               </div>
           ))}

@@ -45,18 +45,20 @@ const PreviewPopup = ({data, onClose}) => {
           From: "opacity-100 translate-y-0 sm:scale-100"
           To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
       --> */}
-          <div onClick={(e) => e.stopPropagation()} class="relative transform overflow-hidden rounded-lg bg-black text-left shadow-xl transition-all my-8 w-full max-w-2xl">
+          <div onClick={(e) => e.stopPropagation()} class="relative transform overflow-hidden rounded-lg bg-black text-left shadow-xl transition-all my-8 w-full max-w-5xl">
             <div className="flex">
               <div>
                 <img src={data.strMealThumb} alt="" />
               </div>
               <div class="p-4">
-                <h2 className="text-2xl w-[340px]">{data.strMeal}</h2>
-                <p className="mt-1 text-sm text-white md:text-left">
-                  Ingredients: Beef, Cheese, Lettuce, Tomato, Pickles, Onions
+                <h2 className="text-2xl w-[340px] font-bold uppercase pb-4">{data.strMeal}</h2>
+                <h3 className="text-xl text-blue-300 underline">Ingredients:</h3>
+                <p className="mt-1 text-sm text-white md:text-left pb-4">
+                Beef, Cheese, Lettuce, Tomato, Pickles, Onions
                 </p>
-                <p className="w-[340px]">{limitWords(data.strInstructions, 50)}</p>
-                <div className="absolute bottom-0 right-0 z-21 flex justify-end items-end mb-2">
+                <h3 className="text-xl text-blue-300 underline">Instructions:</h3>
+                <p className="w-[340px]">{limitWords(data.strInstructions, 130)}</p>
+                <div className="absolute bottom-0 right-0 z-21 flex justify-end items-end mb-3 w-[30px] scale-125">
                     <FavoriteButton />
                 </div>
               </div>
