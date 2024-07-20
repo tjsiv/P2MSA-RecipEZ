@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../index.css";
 
 const LoginForm = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState("");
@@ -20,7 +21,7 @@ const LoginForm = ({ onLoginSuccess }) => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Login</h2>
       <input
         type="text"
@@ -34,7 +35,7 @@ const LoginForm = ({ onLoginSuccess }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
       <button onClick={handleLogin}>Login</button>
     </div>
   );
