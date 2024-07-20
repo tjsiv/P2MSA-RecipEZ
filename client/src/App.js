@@ -31,9 +31,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomeCards />} />
           <Route path="/search" element={<SearchBar />} />
-          <Route path="/favorites" element="" />
-          <Route path="/categories" element="" />
-          <Route path="/feeling-lucky" element="" />
+          <Route path="/favorites" element={<div>Favorites</div>} />
+          <Route path="/categories" element={<div>Categories</div>} />
+          <Route path="/feeling-lucky" element={<div>Feeling Lucky</div>} />
           <Route path="/register" element={<RegisterForm />} />
           <Route
             path="/login"

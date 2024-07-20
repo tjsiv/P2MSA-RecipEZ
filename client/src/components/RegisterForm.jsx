@@ -12,7 +12,10 @@ const RegisterForm = () => {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post("http://localhost:9000/users/register", { username, email, password });
+      const response = await axios.post(
+        "http://localhost:9000/users/register",
+        { username, email, password }
+      );
       console.log("User registered:", response.data);
       // Redirect to login page upon successful registration
       navigate("/login");

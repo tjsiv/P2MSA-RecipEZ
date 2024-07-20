@@ -2,20 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap");
 
-*{
+* {
   color: white;
 }
 
-
-h1, h2, h3, h4, h5, h6{
-  font-family: 'Architects Daughter', cursive;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Architects Daughter", cursive;
 }
 
-p, ul, li{
-  font-family: 'Playwright', sans-serif;
+p,
+ul,
+li {
+  font-family: "Playwright", sans-serif;
 }
 
 body {
@@ -38,7 +44,9 @@ code {
   display: flex;
   justify-content: center;
   align-items: flex-start; /* Adjusted to align items at the top */
-  min-height: calc(100vh - 100px); /* Ensure HomeCard-container takes up at least the viewport height minus footer height */
+  min-height: calc(
+    100vh - 100px
+  ); /* Ensure HomeCard-container takes up at least the viewport height minus footer height */
   background-color: black;
 }
 
@@ -55,8 +63,8 @@ code {
 .card {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 350px; 
-  height: 400px; 
+  width: 350px;
+  height: 400px;
   padding: 20px;
   margin: 20px;
   text-align: center;
@@ -90,13 +98,13 @@ code {
 /* Responsive Layout */
 @media (max-width: 768px) {
   .card-container {
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
   }
-  
+
   .card {
     width: 100%;
-    height: auto; 
+    height: auto;
     margin-bottom: 20px;
   }
 }
@@ -116,7 +124,7 @@ code {
 .footer-content {
   max-width: 960px;
   margin: 0 auto;
-  padding: 10px; 
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,7 +135,7 @@ code {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px; 
+  gap: 15px;
 }
 
 .footer-link {
@@ -135,8 +143,8 @@ code {
   display: inline-flex;
   align-items: center;
   font-size: large;
-  color: white; 
-  margin: 5px 0; 
+  color: white;
+  margin: 5px 0;
 }
 
 .footer-link:hover {
@@ -184,8 +192,8 @@ code {
 .card {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 350px; 
-  height: 400px; 
+  width: 350px;
+  height: 400px;
   padding: 20px;
   margin: 20px;
   text-align: center;
@@ -219,13 +227,13 @@ code {
 /* Responsive Layout */
 @media (max-width: 768px) {
   .card-container {
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
   }
-  
+
   .card {
     width: 100%;
-    height: auto; 
+    height: auto;
     margin-bottom: 20px;
   }
 }

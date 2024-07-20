@@ -1,22 +1,34 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../index.css";
 
 const LoginForm = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:9000/users/login", { username, password });
+      const response = await axios.post("http://localhost:9000/users/login", {
+        username,
+        password,
+      });
       console.log("User logged in:", response.data);
 
-      // Calling parent component callback function with user data
+      // Calling the parent component callback function with user data
       onLoginSuccess(response.data.user);
     } catch (error) {
       console.error("Login failed:", error.response?.data);
-      setError("Invalid username or password");
+      if (error.response?.status === 404) {
+        setError("User not registered. Redirecting to registration page.");
+        setTimeout(() => {
+          navigate("/register");
+        }, 2000); // Redirecting after 2 seconds
+      } else {
+        setError("Invalid username or password");
+      }
     }
   };
 
