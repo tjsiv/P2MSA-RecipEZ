@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
 
+
 const LoginForm = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +35,7 @@ const LoginForm = ({ onLoginSuccess }) => {
   };
 
   return (
-    <div className="login-container">
+    <div>
       <h2>Login</h2>
       <input
         type="text"
@@ -48,7 +49,7 @@ const LoginForm = ({ onLoginSuccess }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      {error && <p className="error-message">{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <button onClick={handleLogin}>Login</button>
     </div>
   );
