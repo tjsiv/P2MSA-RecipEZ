@@ -1,24 +1,28 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = async () => {
     try {
       const response = await axios.post("http://localhost:9000/users/register", { username, email, password });
       console.log("User registered:", response.data);
-      // Optionally handle success (e.g., redirect to login page)
+      // Redirect to login page upon successful registration
+      navigate("/login");
     } catch (error) {
       console.error("Registration failed:", error);
-      // Handle error (e.g., show error message to user)
+      setError("Registration failed. Please try again.");
     }
   };
 
   return (
-    <div className="register-container">
+    <div style={styles.container}>
       <h2>Register</h2>
       <input
         type="text"
@@ -41,7 +45,8 @@ const RegisterForm = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button className="register-button" onClick={handleRegister}>Register</button>
+      {error && <p style={styles.error}>{error}</p>}
+      <button style={styles.button} onClick={handleRegister}>Register</button>
     </div>
   );
 };
@@ -52,17 +57,12 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
   },
-  inputButtonContainer: {
-    display: "flex",
-    alignItems: "center",
-    marginBottom: "16px",
-  },
   input: {
     padding: "8px",
     fontSize: "16px",
     border: "1px solid #ccc",
     borderRadius: "4px",
-    marginRight: "8px",
+    marginBottom: "16px",
     color: "black",
   },
   button: {
@@ -74,26 +74,10 @@ const styles = {
     color: "white",
     cursor: "pointer",
   },
-  resultsContainer: {
-    marginTop: "16px",
-    width: "100%",
-    textAlign: "center",
-  },
-  resultItem: {
-    padding: "8px",
-    borderBottom: "1px solid #ccc",
-  },
-  loading: {
-    padding: "8px",
-    color: "#007bff",
-  },
   error: {
     padding: "8px",
     color: "red",
   },
-  noResults: {
-    padding: "8px",
-    color: "#999",
-  },
 };
+
 export default RegisterForm;
