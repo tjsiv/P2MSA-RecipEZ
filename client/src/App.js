@@ -1,78 +1,59 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 import HomeCards from "./components/HomeCards";
+import UserProfile from "./components/UserProfile";
+import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
 
 const App = () => {
-  const handleSearch = (query) => {};
-  //***************************************************************************************************************************************************************** */
-  // const [user, setUser] = useState(null); // State to hold logged-in user data
+  const [user, setUser] = useState(null);
 
-  // const handleLoginSuccess = (userData) => {
-  //   setUser(userData); // Set logged-in user data
-  // };
+  const handleLoginSuccess = (userData) => {
+    setUser(userData);
+  };
 
-  // const handleLogout = () => {
-  //   setUser(null); // Clear logged-in user data (logout functionality)                                               this is for  login checking
-  // };
-  //
-  // return(
-  // <div>
-  //     {!user ? (
-  //       <LoginForm onLoginSuccess={handleLoginSuccess} />
-  //     ) : (
-  //       <UserProfile user={user} onLogout={handleLogout} />
-  //     )}
-  //   </div>
-  // );
-  //*************************************************************************************************************************************************************** */
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { apiResponse: "" };
-  // }
-
-  // callAPI() {
-  //   fetch("http://localhost:9000/testAPI")
-  //     .then(res => res.text())
-  //     .then(res => this.setState({ apiResponse: res }));
-  // }
-
-  // componentDidMount() {
-  //   this.callAPI();
-  // }
-
-  // render() {
+  const handleLogout = () => {
+    setUser(null);
+  };
 
   return (
     <Router>
       <div>
         <Navbar />
         <Routes>
-          {/* Home Route */}
-          <Route path="/" element="" />
-          {/* Search Route */}
-          <Route
-            path="/search"
-            element={<SearchBar onSearch={handleSearch} />}
-          />
-          {/* Favorites Route */}
+          <Route path="/" element={<HomeCards />} />
+          <Route path="/search" element={<SearchBar />} />
           <Route path="/favorites" element="" />
-          {/* Categories Route */}
           <Route path="/categories" element="" />
-          {/* Feeling Lucky Route */}
           <Route path="/feeling-lucky" element="" />
-          {/* Login Route */}
-          <Route path="/user" element="" />
-          {/* Recipe Details Route */}
+          <Route path="/register" element={<RegisterForm />} />
+          <Route
+            path="/login"
+            element={<LoginForm onLoginSuccess={handleLoginSuccess} />}
+          />
+          <Route
+            path="/user"
+            element={
+              user ? (
+                <UserProfile user={user} onLogout={handleLogout} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
         </Routes>
-        <HomeCards />
         <Footer />
       </div>
     </Router>
   );
 };
-// }
 
 export default App;

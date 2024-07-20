@@ -231,7 +231,7 @@ code {
 }
 /* HomeCard Styling end */
 
-RegisterForm/* Register Styling start */
+/* Register Styling start */
 .register-container {
   max-width: 300px;
   margin: auto;
@@ -271,6 +271,7 @@ RegisterForm/* Register Styling start */
 .register-container button:hover {
   background-color: #0b7dda;
 }
+/* Register Styling End */
 
 /* LoginForm Styling start */
 .login-container {
@@ -318,3 +319,4 @@ RegisterForm/* Register Styling start */
 .login-container button:hover {
   background-color: #45a049;
 }
+/* Login Form Styling End */
