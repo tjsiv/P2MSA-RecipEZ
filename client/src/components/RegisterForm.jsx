@@ -18,7 +18,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div>
+    <div className="register-container">
       <h2>Register</h2>
       <input
         type="text"
@@ -41,7 +41,7 @@ const RegisterForm = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleRegister}>Register</button>
+      <button className="register-button" onClick={handleRegister}>Register</button>
     </div>
   );
 };
