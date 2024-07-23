@@ -27,6 +27,7 @@ const Navbar = ({ user }) => {
 
   return (
     <div className="sticky top-0 z-50 md:flex md:justify-evenly bg-gray-800">
+      {/* Web Nav Bar */}
       <div className="flex justify-between items-center py-3 md:py-0 w-[98%] xl:w-[80%] 2xl:w-[50%]">
         <h1 className="uppercase font-bold pl-4 text-4xl text-pink-200">
           <Link to="/">
@@ -95,10 +96,22 @@ const Navbar = ({ user }) => {
             Recip<span className="text-blue-200">EZ</span>
           </h1>
           <ul className="pt-4 uppercase mx-4">
-            <li className="p-4 border-b border-gray-600">Search</li>
-            <li className="p-4 border-b border-gray-600">Favorites</li>
-            <li className="p-4 border-b border-gray-600">Categories</li>
-            <li className="p-4 border-b border-gray-600">Login</li>
+            <li className="p-4 border-b border-gray-600">
+              <Link to="/search" onClick={toggleNav}>Search</Link>
+            </li>
+            <li className="p-4 border-b border-gray-600">
+              <Link to="/favorites" onClick={toggleNav}>Favorites</Link>
+            </li>
+            <li className="p-4 border-b border-gray-600">
+              <Link to="/categories" onClick={toggleNav}>Categories</Link>
+            </li>
+            {!user && (
+              <li className="text-pink-200 p-4 border-b border-gray-600 text-xl font-bold uppercase">
+                <Link to="/login" onClick={toggleNav}>
+                  Login
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
         {/* Hidden Nav Toggle */}
