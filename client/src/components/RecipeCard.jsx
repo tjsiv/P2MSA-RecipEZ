@@ -5,9 +5,9 @@ import FavoriteButton from "./FavoriteButton";
 const RecipeCard = ({ results, handleModal }) => {
   return (
     <div>
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 ">
+      <div className="mx-auto max-w-2xl px-4 py-4 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight">Recipes:</h2>
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {results.map((result, index) => (
             <div
               key={index}
@@ -29,7 +29,7 @@ const RecipeCard = ({ results, handleModal }) => {
                     <a href="#">
                       <span
                         aria-hidden="true"
-                        class="absolute inset-0 bg-gray-600 opacity-10 z-[-1] rounded-md"
+                        className="absolute inset-0 bg-gray-600 opacity-10 z-[-1] rounded-md"
                       ></span>
                       {/* Food Name */}
                       {result.strMeal}
