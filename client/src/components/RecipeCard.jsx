@@ -23,7 +23,7 @@ const RecipeCard = ({ results, handleModal }) => {
                 />
               </div>
               {/* Text Container */}
-              <div className="mt-4 flex justify-between md:text-left">
+              <div className="mt-4 flex justify-between text-left">
                 <div className="w-[450px]">
                   <h3 className="text-2xl pl-4 w-[240px]">
                     <a href="#">
