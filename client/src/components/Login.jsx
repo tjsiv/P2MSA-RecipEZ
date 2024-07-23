@@ -21,8 +21,12 @@ const Login = () => {
       });
       console.log("User logged in:", response.data);
 
+
       setUser(response.data.user); // Save user to context
-      navigate("/"); // Navigate to dashboard or another page
+      
+
+      navigate("/home");
+
     } catch (error) {
       console.error("Login failed:", error.response?.data);
 
@@ -53,7 +57,7 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container">
+    <div className="auth-container pt-[7%]">
       {isRegistering ? (
         <div className="register-container">
           <h2>Register</h2>

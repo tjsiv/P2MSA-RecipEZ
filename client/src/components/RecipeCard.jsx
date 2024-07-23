@@ -6,9 +6,9 @@ const RecipeCard = ({ results, handleModal }) => {
   
   return (
     <div>
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 ">
+      <div className="mx-auto max-w-2xl px-4 py-4 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight">Recipes:</h2>
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {results.map((result, index) => (
             <div
               key={index}
@@ -24,7 +24,7 @@ const RecipeCard = ({ results, handleModal }) => {
                 />
               </div>
               {/* Text Container */}
-              <div className="mt-4 flex justify-between md:text-left">
+              <div className="mt-4 flex justify-between text-left">
                 <div className="w-[450px]">
                   <h3 className="text-2xl pl-4 w-[240px]">
                     <a href="#">
