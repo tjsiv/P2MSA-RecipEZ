@@ -20,6 +20,8 @@ const Login = ({ onLoginSuccess }) => {
       console.log("User logged in:", response.data);
 
       onLoginSuccess(response.data.user);
+
+      navigate("/home");
     } catch (error) {
       console.error("Login failed:", error.response?.data);
 
