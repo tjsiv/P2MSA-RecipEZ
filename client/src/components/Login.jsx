@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 import "../index.css";
 
-const Login = ({ onLoginSuccess }) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -19,9 +21,12 @@ const Login = ({ onLoginSuccess }) => {
       });
       console.log("User logged in:", response.data);
 
-      onLoginSuccess(response.data.user);
+
+      setUser(response.data.user); // Save user to context
+      
 
       navigate("/home");
+
     } catch (error) {
       console.error("Login failed:", error.response?.data);
 

@@ -1,23 +1,34 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { FaRegHeart } from 'react-icons/fa';
+import { UserContext } from '../context/UserContext';
 
-const FavoriteButton = ({userId, recipeId, isFavorite, refreshData}) => {
-    const [favorited, setfavorited] = useState(isFavorite);
-    const handleFavorite = async () => {
-        try {
-            const response = await axios.post(`http://localhost:9000/favorites`, {userId, recipeId});
-            if(favorited){
-                setfavorited(false); //Unfavorite
-            } else {
-                setfavorited(true); //Favorite
-            }
-            refreshData(); // Update the favorites list in the parent component
-        }
-        catch(error){
-            console.error("Error favoriting recipe:", error);
-        }
+const FavoriteButton = ({  recipe_id, isFavorite, refreshData }) => {
+  const [favorited, setFavorited] = useState(isFavorite);
+  const { user } = useContext(UserContext);
+  const user_id = user?.user_id; // Extract user ID from context
+
+  const handleFavorite = async () => {
+    if (!user_id) {
+      console.error("User is not logged in");
+      return;
     }
+
+    try {
+      const response = await axios.post('http://localhost:9000/favorites', {
+        user_id: user_id,
+        recipe_id: recipe_id,
+      });
+
+      if (response.data) {
+        console.log(response.data.message);
+        refreshData(); // Update the favorites list in the parent component
+      }
+    } catch (error) {
+      console.error("Error managing favorites:", error);
+    }
+  };
+  console.log({user_id, recipe_id})
   return (
     <button
       className="w-[40px] h-[25px] hover:text-pink-400"
@@ -29,7 +40,7 @@ const FavoriteButton = ({userId, recipeId, isFavorite, refreshData}) => {
         }`}
       />
     </button>
-  )
-}
+  );
+};
 
-export default FavoriteButton 
+export default FavoriteButton;

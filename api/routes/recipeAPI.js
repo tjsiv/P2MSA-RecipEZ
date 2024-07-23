@@ -31,4 +31,18 @@ appCall.get("/", async (req, res) => {
   }
 });
 
+app.get("/recipe/:id", async (req, res) => {
+  const recipe_id = req.params.id;
+  const apiUrl = `https://www.themealdb.com/api/json/v2/${process.env.API_KEY}/lookup.php?i=${recipe_id}`;
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    res.json(data.meals[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+});
+
 module.exports = appCall;

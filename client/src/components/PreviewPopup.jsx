@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import FavoriteButton from "./FavoriteButton";
+import { UserContext } from '../context/UserContext';
 
 const PreviewPopup = ({ data, onClose }) => {
+  const { user } = useContext(UserContext); // Access user from context
+  const loggedUser = user?.user_id; // Ensure user and user.id are defined
+
   const limitWords = (str, limit) => {
     const words = str.split(" ");
     if (words.length > limit) {
@@ -9,31 +13,34 @@ const PreviewPopup = ({ data, onClose }) => {
     }
     return str;
   };
+
+  console.log("loggedUser:", loggedUser); // Corrected console log
+
   return (
     <div
-      class="relative z-20"
+      className="relative z-20"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
     >
       <div
-        class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
         aria-hidden="true"
       ></div>
-      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
         <div
-          class="flex min-h-full items-center justify-center p-4 text-center  sm:p-0"
+          className="flex min-h-full items-center justify-center p-4 text-center sm:p-0"
           onClick={onClose}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            class="relative transform overflow-hidden rounded-lg bg-black text-left shadow-xl transition-all my-8 w-full max-w-5xl"
+            className="relative transform overflow-hidden rounded-lg bg-black text-left shadow-xl transition-all my-8 w-full max-w-5xl"
           >
             <div className=" md:flex">
               <div>
                 <img src={data.strMealThumb} alt="" />
               </div>
-              <div class="p-4">
+              <div className="p-4">
                 <h2 className="text-2xl w-[340px] font-bold uppercase pb-4">
                   {data.strMeal}
                 </h2>
@@ -50,7 +57,11 @@ const PreviewPopup = ({ data, onClose }) => {
                   {data.strInstructions}
                 </p>
                 <div className="absolute bottom-0 right-0 z-21 flex justify-end items-end mb-3 w-[30px] scale-125">
-                  <FavoriteButton />
+                  <FavoriteButton                      
+                    recipe_id={data.idMeal}
+                    user_id={loggedUser} // Pass user_id to FavoriteButton
+                    className="ml-4"
+                  />
                 </div>
               </div>
             </div>

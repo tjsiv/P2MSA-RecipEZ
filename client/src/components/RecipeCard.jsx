@@ -1,8 +1,9 @@
 import React from "react";
-import axios from "axios";
-import FavoriteButton from "./FavoriteButton";
+
+
 
 const RecipeCard = ({ results, handleModal }) => {
+  
   return (
     <div>
       <div className="mx-auto max-w-2xl px-4 py-4 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
@@ -44,7 +45,7 @@ const RecipeCard = ({ results, handleModal }) => {
                     {result.strIngredient9}, {result.strIngredient10}
                   </p>
                   <div className="absolute bottom-0 right-0 z-21 flex justify-end items-end mb-2 w-[20px]">
-                    <FavoriteButton className="ml-4" />
+                    
                   </div>
                 </div>
               </div>
