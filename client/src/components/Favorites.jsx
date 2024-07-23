@@ -13,7 +13,7 @@ const Favorites = ({ recipes }) => {
       <ul>
         {favoriteRecipes.map((recipe) => (
           <li key={recipe.id}>
-            {recipe.name}
+            {recipe.recipe_name}
             <button onClick={() => removeFromFavorites(recipe.id)}>
               Remove
             </button>
@@ -25,7 +25,7 @@ const Favorites = ({ recipes }) => {
       <h2>Display Favorites</h2>
       <ul>
         {favoriteRecipes.map((recipe) => (
-          <li key={recipe.id}>{recipe.name}</li>
+          <li key={recipe.id}>{recipe.recipe_name}</li>
         ))}
       </ul>
     </div>

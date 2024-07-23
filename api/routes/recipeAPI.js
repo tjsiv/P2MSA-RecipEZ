@@ -17,7 +17,7 @@ appCall.get("/", async (req, res) => {
       apiUrl = `https://www.themealdb.com/api/json/v2/${process.env.API_KEY}/search.php?f=${query}`;
     } else {
       // Search by name
-      apiUrl = `https://www.themealdb.com/api/json/v2/${process.env.API_KEY}/search.php?s=${query}`;
+      apiUrl = `https://www.themealdb.com/api/json/v2/${process.env.API_KEY}/search.php?s=${query}`; 
     }
 
     // Fetch data from the API
