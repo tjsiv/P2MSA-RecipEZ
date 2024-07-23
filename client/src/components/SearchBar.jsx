@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import RecipeCard from "./RecipeCard";
 import PreviewPopup from "./PreviewPopup";
+import { UserContext } from '../context/UserContext';
 
 const SearchBar = () => {
+  const { user } = useContext(UserContext); // Access user from context
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -28,6 +30,7 @@ const SearchBar = () => {
     fetch(`http://localhost:9000/search?q=${query}`)
       .then((response) => response.json())
       .then((data) => {
+        // console.log("data from search", data)
         setResults(data); // Adjust according to API response
         setLoading(false);
       })
@@ -67,7 +70,7 @@ const SearchBar = () => {
           query && <div style={styles.noResults}>No results found</div>
         )}
       </div>
-      {modal ? <PreviewPopup data={selectedData} onClose={handleModal} /> : null}
+      {modal && selectedData ? <PreviewPopup data={selectedData} onClose={handleModal} /> : null}
     </div>
   );
 };
