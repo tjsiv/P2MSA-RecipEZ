@@ -43,7 +43,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div style={styles.container} className="pt-4">
       <div style={styles.inputButtonContainer}>
         <input
           type="text"
