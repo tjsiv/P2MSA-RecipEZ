@@ -29,7 +29,7 @@ const PreviewPopup = ({ data, onClose }) => {
             onClick={(e) => e.stopPropagation()}
             class="relative transform overflow-hidden rounded-lg bg-black text-left shadow-xl transition-all my-8 w-full max-w-5xl"
           >
-            <div className="flex">
+            <div className=" md:flex">
               <div>
                 <img src={data.strMealThumb} alt="" />
               </div>
@@ -46,8 +46,8 @@ const PreviewPopup = ({ data, onClose }) => {
                 <h3 className="text-xl text-blue-300 underline">
                   Instructions:
                 </h3>
-                <p className="w-[340px]">
-                  {limitWords(data.strInstructions, 130)}
+                <p className="md:w-[340px] overflow-y-scroll max-h-[180px] md:max-h-[400px]">
+                  {data.strInstructions}
                 </p>
                 <div className="absolute bottom-0 right-0 z-21 flex justify-end items-end mb-3 w-[30px] scale-125">
                   <FavoriteButton />

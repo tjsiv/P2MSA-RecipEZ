@@ -52,7 +52,7 @@ const Login = ({ onLoginSuccess }) => {
   };
 
   return (
-    <div className="auth-container pt-4">
+    <div className="auth-container pt-[7%]">
       {isRegistering ? (
         <div className="register-container">
           <h2>Register</h2>
