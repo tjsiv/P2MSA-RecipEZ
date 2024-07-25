@@ -12,7 +12,6 @@ import Navbar from "./components/Navbar";
 import HomeCards from "./components/HomeCards";
 import UserProfile from "./components/UserProfile";
 import Favorites from "./components/Favorites";
-import Categories from "./components/Categories";
 import Login from "./components/Login";
 
 const App = () => {
@@ -35,7 +34,6 @@ const App = () => {
             <Route path="/" element={<HomeCards />} />
             <Route path="/search" element={<SearchBar onSearch={() => {}} />} />
             <Route path="/favorites" element={user ?  <Navigate to="/login" /> : <Favorites />} />
-            <Route path="/categories" element={<Categories />} />
             <Route
               path="/login"
               element={<Login onLoginSuccess={handleLoginSuccess} />} // Updated component

@@ -52,12 +52,6 @@ const Navbar = ({ user }) => {
             </Link>
           </li>
           <li className="text-pink-200 pr-2 text-xl font-bold uppercase">
-            <Link
-              to="/categories"
-              className="hover:bg-gray-900 p-1 px-3 rounded-full transition duration-150"
-            >
-              Categories
-            </Link>
           </li>
           {!user && (
             <li className="text-pink-200 pr-2 text-xl font-bold uppercase">
