@@ -6,7 +6,7 @@ const Categories = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:9000/api/categories")
+      .get("https://react-express-connection.onrender.com/api/categories")
       .then((response) => {
         setCategories(response.data);
       })

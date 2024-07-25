@@ -18,7 +18,7 @@ const Favorites = () => {
       const favoriteRecipeIds = await response.json();
       const recipes = await Promise.all(
         favoriteRecipeIds.map(async (id) => {
-          const recipeResponse = await fetch(`http://localhost:9000/favsearch/${id}`);
+          const recipeResponse = await fetch(`https://react-express-connection.onrender.com/favsearch/${id}`);
           return await recipeResponse.json();
         })
       );
@@ -30,7 +30,7 @@ const Favorites = () => {
 
   const removeFromFavorites = async (id) => {
     try {
-      await axios.post('http://localhost:9000/favorites')
+      await axios.post('https://react-express-connection.onrender.com/favorites')
     }
       
     catch (error) {

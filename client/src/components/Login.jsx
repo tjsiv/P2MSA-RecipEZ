@@ -14,7 +14,7 @@ const Login = ({ onLoginSuccess }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:9000/users/login", {
+      const response = await axios.post("https://react-express-connection.onrender.com/users/login", {
         username,
         password,
       });
@@ -38,7 +38,7 @@ const Login = ({ onLoginSuccess }) => {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post("http://localhost:9000/users/register", {
+      const response = await axios.post("https://react-express-connection.onrender.com/users/register", {
         username,
         email,
         password,

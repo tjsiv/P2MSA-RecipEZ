@@ -15,7 +15,7 @@ const FavoriteButton = ({  recipe_id, isFavorite, refreshData }) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:9000/favorites', {
+      const response = await axios.post('https://react-express-connection.onrender.com/favorites', {
         user_id: user_id,
         recipe_id: recipe_id,
       });
