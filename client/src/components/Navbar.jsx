@@ -96,9 +96,6 @@ const Navbar = ({ user }) => {
             <li className="p-4 border-b border-gray-600">
               <Link to="/favorites" onClick={toggleNav}>Favorites</Link>
             </li>
-            <li className="p-4 border-b border-gray-600">
-              <Link to="/categories" onClick={toggleNav}>Categories</Link>
-            </li>
             {!user && (
               <li className="text-pink-200 p-4 border-b border-gray-600 text-xl font-bold uppercase">
                 <Link to="/login" onClick={toggleNav}>
