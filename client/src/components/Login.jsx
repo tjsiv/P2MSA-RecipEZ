@@ -4,13 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import "../index.css";
 
-const Login = () => {
+const Login = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
-  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -21,11 +20,9 @@ const Login = () => {
       });
       console.log("User logged in:", response.data);
 
+      onLoginSuccess(response.data.user); // Save user to context
 
-      setUser(response.data.user); // Save user to context
-      
-
-      navigate("/home");
+      navigate("/user"); // Navigates to user profile page after login
 
     } catch (error) {
       console.error("Login failed:", error.response?.data);
