@@ -8,6 +8,19 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/find', async (req, res) => {
+  const userId = req.query.user_id;
+  console.log("User ID:", userId); // Corrected log statement
+  try {
+    const allFavorites = await pool.query("SELECT recipe_id FROM favorites WHERE user_id = $1", [userId]);
+    console.log("Favorites Query Result:", allFavorites.rows); // Log the query result
+    res.json(allFavorites.rows.map(row => row.recipe_id)); // Return an array of recipe IDs
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error"); // 500 Internal Server Error
+  }
+});
+
 //favorite a recipe from button
 router.post("/favorites", async (req, res) => {
   const { user_id, recipe_id } = req.body;
@@ -42,15 +55,7 @@ router.post("/favorites", async (req, res) => {
   }
 });
 
-router.get('/favorites', async(req, res) => {
-  try{
-    // get all recipes from the database
-    const allFavorites = await pool.query("SELECT * FROM favorites WHERE user_id = $1");
-  } catch(err) {
-    console.error(err);
-    res.status(500).send("Server Error");  // 500 Internal Server Error
-  }
-})
+
 
 
 

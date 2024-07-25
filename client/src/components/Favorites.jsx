@@ -8,20 +8,24 @@ const Favorites = () => {
 
   useEffect(() => {
     if (user) {
-      fetchFavoriteRecipes(user.id);
+      console.log("User ID:", user.user_id); // Debug log to check if user ID is available
+      fetchFavoriteRecipes(user.user_id);
     }
   }, [user]);
 
-  const fetchFavoriteRecipes = async (userId) => {
+  const fetchFavoriteRecipes = async (user_id) => {
     try {
-      const response = await fetch(`/api/favorites?userId=${userId}`);
-      const favoriteRecipeIds = await response.json();
+      const response = await axios.get(`http://localhost:9000/find?user_id=${user_id}`);
+      const favoriteRecipeIds = response.data;
+      console.log("Favorite Recipe IDs:", favoriteRecipeIds); // Debug log to check fetched IDs
+
       const recipes = await Promise.all(
         favoriteRecipeIds.map(async (id) => {
-          const recipeResponse = await fetch(`http://localhost:9000/favsearch/${id}`);
-          return await recipeResponse.json();
+          const recipeResponse = await axios.get(`http://localhost:9000/recipe/${id}`);
+          return recipeResponse.data;
         })
       );
+
       setFavoriteRecipes(recipes);
     } catch (error) {
       console.error("Error fetching favorite recipes:", error);
@@ -30,10 +34,9 @@ const Favorites = () => {
 
   const removeFromFavorites = async (id) => {
     try {
-      await axios.post('http://localhost:9000/favorites')
-    }
-      
-    catch (error) {
+      await axios.delete(`http://localhost:9000/favorites/${id}`);
+      setFavoriteRecipes(favoriteRecipes.filter((recipe) => recipe.id !== id));
+    } catch (error) {
       console.error("Error removing favorite recipe:", error);
     }
   };
@@ -56,7 +59,7 @@ const Favorites = () => {
       <h2>Display Favorites</h2>
       <ul>
         {favoriteRecipes.map((recipe) => (
-          <li key={recipe.id}>{recipe.strMeal}</li> 
+          <li key={recipe.id}>{recipe.strMeal}</li>
         ))}
       </ul>
     </div>
