@@ -3,12 +3,9 @@
 RecipEZ
 
 # Deployment 
-- Frontend ```
-https://recipez-ijuh.onrender.com/
-```
-- Backend ``` 
 
- ```
+https://recipez-ijuh.onrender.com/
+
 
 ## Table of Contents
 
