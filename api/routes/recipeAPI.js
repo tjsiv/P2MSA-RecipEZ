@@ -31,7 +31,7 @@ appCall.get("/", async (req, res) => {
   }
 });
 
-app.get("/recipe/:id", async (req, res) => {
+appCall.get("/recipe/:id", async (req, res) => {
   const recipe_id = req.params.id;
   const apiUrl = `https://www.themealdb.com/api/json/v2/${process.env.API_KEY}/lookup.php?i=${recipe_id}`;
 
