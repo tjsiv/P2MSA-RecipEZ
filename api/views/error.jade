@@ -1,6 +1,18 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  .error-container
+    .error-header
+      h1 Oops! Something went wrong.
+    .error-message
+      h2 Error #{error.status}: #{message}
+      p The server encountered an error and could not complete your request.
+    .error-details
+      if error.stack
+        h3 Error Details:
+        pre #{error.stack}
+    .error-actions
+      a.button(href="/") Go to Home Page
+      a.button.button-secondary(href="javascript:history.back()") Go Back
+  .error-footer
+    p &copy; 2024 Recipez. All rights reserved.
