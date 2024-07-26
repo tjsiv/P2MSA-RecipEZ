@@ -1,5 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to the #{title}
+  .welcome-container
+    .welcome-header
+      h1 #{title}
+    .welcome-message
+      p Welcome to the #{title} page! We're glad to have you here.
+      p
+        | This is a platform where you can find and share your favorite recipes,
+        | explore new culinary ideas, and connect with a community of food enthusiasts.
+    
+
+  // Optional: Add some footer content
+  .welcome-footer
+    p &copy; 2024 RecipEZ. All rights reserved.
