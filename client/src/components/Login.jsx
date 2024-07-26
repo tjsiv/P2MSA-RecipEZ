@@ -10,6 +10,7 @@ const Login = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -20,10 +21,17 @@ const Login = ({ onLoginSuccess }) => {
       });
       console.log("User logged in:", response.data);
 
-      onLoginSuccess(response.data.user); // Save user to context
 
-      navigate("/user"); // Navigates to user profile page after login
+      // Save user to context
+      setUser(response.data.user);
 
+      // If you still need to call the parent callback
+      if (onLoginSuccess) {
+        onLoginSuccess(response.data.user);
+      }
+
+
+      navigate("/user");
     } catch (error) {
       console.error("Login failed:", error.response?.data);
 
