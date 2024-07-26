@@ -10,14 +10,20 @@ var recipeRouter = require('./routes/recipeLinks');
 var searchRouter = require('./routes/recipeAPI')
 var usersRouter = require('./routes/users');
 var testAPIRouter = require("./routes/testAPI");
+var favoritesRouter = require('./routes/favorites');
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+const corsOptions = {
+  origin: 'http://localhost:3000', // Your frontend domain
+  optionsSuccessStatus: 200 // For legacy browser support
+};
+
 //middleware
-app.use(cors());//needed to connect front to backend
+app.use(cors(corsOptions));//needed to connect front to backend
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,6 +34,7 @@ app.use('/', recipeRouter);
 app.use('/search', searchRouter); 
 app.use('/users', usersRouter);
 app.use("/testAPI", testAPIRouter);
+app.use('/favor', favoritesRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

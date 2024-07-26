@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import "../index.css";
 
-const Login = () => {
+const Login = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -21,12 +21,15 @@ const Login = () => {
       });
       console.log("User logged in:", response.data);
 
+      // Save user to context
+      setUser(response.data.user);
 
-      setUser(response.data.user); // Save user to context
-      
+      // If you still need to call the parent callback
+      if (onLoginSuccess) {
+        onLoginSuccess(response.data.user);
+      }
 
-      navigate("/home");
-
+      navigate("/user");
     } catch (error) {
       console.error("Login failed:", error.response?.data);
 

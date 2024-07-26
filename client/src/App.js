@@ -27,33 +27,33 @@ const App = () => {
 
   return (
     
-      <Router>
-        <div>
-          <Navbar user={user} />
-          <Routes>
-            <Route path="/" element={<HomeCards />} />
-            <Route path="/search" element={<SearchBar onSearch={() => {}} />} />
-            <Route path="/favorites" element={user ?  <Navigate to="/login" /> : <Favorites />} />
-            <Route
-              path="/login"
-              element={<Login onLoginSuccess={handleLoginSuccess} />} // Updated component
-            />
-            <Route
-              path="/user"
-              element={
-                user ? (
-                  <UserProfile user={user} onLogout={handleLogout} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route path="*" element={<Navigate to="/" />} />
-            {/* re-directs to 404 or home */}
-          </Routes>
-          <Footer />
-        </div>
-      </Router>
+    <Router>
+    <div>
+      <Navbar user={user} />
+      <Routes>
+        <Route path="/" element={<HomeCards />} />
+        <Route path="/search" element={<SearchBar onSearch={() => {}} />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route
+          path="/login"
+          element={<Login onLoginSuccess={handleLoginSuccess} />} // Updated component
+        />
+        <Route
+          path="/user"
+          element={
+            user ? (
+              <UserProfile user={user} onLogout={handleLogout} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route path="*" element={<Navigate to="/" />} />
+        {/* re-directs to 404 or home */}
+      </Routes>
+      <Footer />
+    </div>
+  </Router>
     
     
   );
