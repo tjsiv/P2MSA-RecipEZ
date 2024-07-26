@@ -1,8 +1,108 @@
+/* public/stylesheets/style.css */
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
-a {
-  color: #00B7FF;
+.welcome-container {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.welcome-header h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.welcome-message p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.welcome-actions {
+  margin-top: 30px;
+}
+
+.welcome-footer {
+  margin-top: 50px;
+  font-size: 0.9em;
+  color: #888;
+}
+/* public/stylesheets/style.css */
+.error-container {
+  text-align: center;
+  padding: 50px 20px;
+  color: #333;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.error-header h1 {
+  font-size: 3em;
+  color: #721c24;
+}
+
+.error-message h2 {
+  font-size: 2em;
+  margin: 20px 0;
+  color: #721c24;
+}
+
+.error-message p {
+  font-size: 1.2em;
+  margin: 20px 0;
+}
+
+.error-details h3 {
+  font-size: 1.5em;
+  margin-top: 30px;
+  color: #721c24;
+}
+
+.error-details pre {
+  text-align: left;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 5px;
+  color: #333;
+  overflow-x: auto;
+}
+
+.error-actions {
+  margin-top: 30px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  color: white;
+  background-color: #007bff;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.button-secondary {
+  background-color: #6c757d;
+}
+
+.button-secondary:hover {
+  background-color: #5a6268;
+}
+
+.error-footer {
+  margin-top: 50px;
+  font-size: 0.9em;
+  color: #888;
 }
