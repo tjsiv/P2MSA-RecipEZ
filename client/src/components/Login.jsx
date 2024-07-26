@@ -15,11 +15,12 @@ const Login = ({ onLoginSuccess }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:9000/users/login", {
+      const response = await axios.post("https://react-express-connection.onrender.com/users/login", {
         username,
         password,
       });
       console.log("User logged in:", response.data);
+
 
       // Save user to context
       setUser(response.data.user);
@@ -28,6 +29,7 @@ const Login = ({ onLoginSuccess }) => {
       if (onLoginSuccess) {
         onLoginSuccess(response.data.user);
       }
+
 
       navigate("/user");
     } catch (error) {
@@ -44,7 +46,7 @@ const Login = ({ onLoginSuccess }) => {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post("http://localhost:9000/users/register", {
+      const response = await axios.post("https://react-express-connection.onrender.com/users/register", {
         username,
         email,
         password,

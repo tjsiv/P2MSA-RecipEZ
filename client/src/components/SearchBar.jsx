@@ -27,7 +27,7 @@ const SearchBar = () => {
     setError("");
     setResults([]);
 
-    fetch(`http://localhost:9000/search?q=${query}`)
+    fetch(`https://react-express-connection.onrender.com/search?q=${query}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log("data from search", data)

@@ -5,7 +5,6 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { UserProvider } from "./context/UserContext";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
@@ -26,6 +25,7 @@ const App = () => {
   };
 
   return (
+
     
     <Router>
     <div>
@@ -56,6 +56,7 @@ const App = () => {
   </Router>
     
     
+
   );
 };
 
