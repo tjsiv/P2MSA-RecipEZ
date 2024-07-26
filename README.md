@@ -29,8 +29,9 @@ Functionality to register, log in & see a user profile section.
 ## Technologies
 
 - **PostGreSQL**: Database
-- **Express**: Backend framework
+- **Express/PG-Promise**: Backend framework
 - **React**: Frontend library
+- **Pug**: Backened Styling
 - **Node.js**: Runtime environment
 - **Tailwind CSS**: Styling framework library
 
