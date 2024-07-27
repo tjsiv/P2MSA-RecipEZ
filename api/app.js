@@ -18,7 +18,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // Your frontend domain
+  origin: 'https://recipez-ijuh.onrender.com', // Your frontend domain
   optionsSuccessStatus: 200 // For legacy browser support
 };
 
