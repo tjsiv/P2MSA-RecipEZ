@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import axios from "axios";
+import FavoriteCard from "./FavoriteCard";
 
 const Favorites = () => {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [selectedData, setSelectedData] = useState(null);
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -52,13 +55,20 @@ const Favorites = () => {
     }
   };
 
+  const handleModal = (result = null) => {
+    setSelectedData(result);
+    setModal(!modal);
+  };
+
   return (
     <div>
       <h2>Favorite Recipes</h2>
+      <FavoriteCard recipes={favoriteRecipes}/>
       <ul>
         {favoriteRecipes.map((recipe) => (
           <li key={recipe.idMeal}>
             {recipe.strMeal} {/* Assuming the API returns 'strMeal' as the recipe name */}
+            {recipe.strMealThumb}
             <button onClick={() => removeFromFavorites(recipe.idMeal)}>
               Remove
             </button>
