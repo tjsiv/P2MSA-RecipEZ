@@ -63,7 +63,7 @@ const Favorites = () => {
   return (
     <div>
       <h2>Favorite Recipes</h2>
-      <FavoriteCard recipes={favoriteRecipes} remove={() => removeFromFavorites(recipe.idMeal)}/>
+      <FavoriteCard recipes={favoriteRecipes} remove={removeFromFavorites}/>
     </div>
   );
 };
