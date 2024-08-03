@@ -43,16 +43,16 @@ const Navbar = ({ user }) => {
               Search
             </Link>
           </li>
-          <li className="text-pink-200 pr-2 text-xl font-bold uppercase ">
-            <Link
-              to="/favorites"
-              className="hover:bg-gray-900 p-1 px-3 rounded-full transition duration-150"
-            >
-              Favorites
-            </Link>
-          </li>
-          <li className="text-pink-200 pr-2 text-xl font-bold uppercase">
-          </li>
+          {user ? (
+            <li className="text-pink-200 pr-2 text-xl font-bold uppercase">
+              <Link
+                to="/login"
+                className="hover:bg-gray-900 p-1 px-3 rounded-full transition duration-150"
+              >
+                Login
+              </Link>
+            </li>
+          ) : null}
           {!user && (
             <li className="text-pink-200 pr-2 text-xl font-bold uppercase">
               <Link
@@ -91,10 +91,14 @@ const Navbar = ({ user }) => {
           </h1>
           <ul className="pt-4 uppercase mx-4">
             <li className="p-4 border-b border-gray-600">
-              <Link to="/search" onClick={toggleNav}>Search</Link>
+              <Link to="/search" onClick={toggleNav}>
+                Search
+              </Link>
             </li>
             <li className="p-4 border-b border-gray-600">
-              <Link to="/favorites" onClick={toggleNav}>Favorites</Link>
+              <Link to="/favorites" onClick={toggleNav}>
+                Favorites
+              </Link>
             </li>
             {!user && (
               <li className="text-pink-200 p-4 border-b border-gray-600 text-xl font-bold uppercase">
