@@ -63,18 +63,7 @@ const Favorites = () => {
   return (
     <div>
       <h2>Favorite Recipes</h2>
-      <FavoriteCard recipes={favoriteRecipes}/>
-      <ul>
-        {favoriteRecipes.map((recipe) => (
-          <li key={recipe.idMeal}>
-            {recipe.strMeal} {/* Assuming the API returns 'strMeal' as the recipe name */}
-            {recipe.strMealThumb}
-            <button onClick={() => removeFromFavorites(recipe.idMeal)}>
-              Remove
-            </button>
-          </li>
-        ))}
-      </ul>
+      <FavoriteCard recipes={favoriteRecipes} remove={() => removeFromFavorites(recipe.idMeal)}/>
     </div>
   );
 };

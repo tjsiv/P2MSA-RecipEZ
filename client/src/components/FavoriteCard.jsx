@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-const FavoriteCard = ({recipes}) => {
+const FavoriteCard = ({recipes, remove}) => {
   
   return (
     <div>
@@ -43,6 +43,7 @@ const FavoriteCard = ({recipes}) => {
                     {recipe.strIngredient7}, {recipe.strIngredient8},{" "}
                     {recipe.strIngredient9}, {recipe.strIngredient10}
                   </p>
+                  <button className="text-red-600" onClick={() => remove(recipe.idMeal)}>Remove</button>
                   <div className="absolute bottom-0 right-0 z-21 flex justify-end items-end mb-2 w-[20px]">
                     
                   </div>
