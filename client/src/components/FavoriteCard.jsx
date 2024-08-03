@@ -35,7 +35,7 @@ const FavoriteCard = ({recipes, remove}) => {
                       {recipe.strMeal}
                     </a>
                   </h3>
-                  <p className="mt-1 text-sm text-white m-4 md:text-left">
+                  <p className="mt-1 text-sm text-white m-4 md:text-left h-[80px]">
                     {/* Ingredients */}
                     {recipe.strIngredient1}, {recipe.strIngredient2},{" "}
                     {recipe.strIngredient3}, {recipe.strIngredient4},{" "}
@@ -43,7 +43,7 @@ const FavoriteCard = ({recipes, remove}) => {
                     {recipe.strIngredient7}, {recipe.strIngredient8},{" "}
                     {recipe.strIngredient9}, {recipe.strIngredient10}
                   </p>
-                  <button className="text-red-600" onClick={() => remove(recipe.idMeal)}>Remove</button>
+                  <button className="text-red-600 pl-4" onClick={() => remove(recipe.idMeal)}>Remove</button>
                   <div className="absolute bottom-0 right-0 z-21 flex justify-end items-end mb-2 w-[20px]">
                     
                   </div>
