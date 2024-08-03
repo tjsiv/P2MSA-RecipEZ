@@ -46,10 +46,10 @@ const Navbar = ({ user }) => {
           {user ? (
             <li className="text-pink-200 pr-2 text-xl font-bold uppercase">
               <Link
-                to="/login"
+                to="/favorites"
                 className="hover:bg-gray-900 p-1 px-3 rounded-full transition duration-150"
               >
-                Login
+                Favorites
               </Link>
             </li>
           ) : null}
